@@ -1,0 +1,71 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#app {
+  height: 100%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // max-width: 640px;
+  .van-field {
+    background: #f3f3f3;
+    border-radius: 5px;
+    .van-field__control {
+      height: 28px;
+    }
+  }
+  .van-search {
+    .van-field__left-icon {
+      align-items: center;
+      display: flex;
+      .van-icon-search {
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(109, 56, 5, 0.57);
+      }
+    }
+    .van-search__content {
+      border-radius: 5px;
+    }
+    .van-field {
+      .van-field__control {
+        height: 35px;
+      }
+    }
+  }
+  ::-webkit-input-placeholder {
+    font-size: 16px;
+    color: #ac8e71;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .van-hairline--bottom::after {
+    border-bottom-width: 0;
+  }
+  .van-stepper--round .van-stepper__minus,
+  .van-stepper--round .van-stepper__plus {
+    color: #6d3805;
+    font-weight: bold;
+  }
+  .van-step--vertical .van-step__circle-container {
+    top: 76px;
+  }
+  .van-step--vertical .van-step__line {
+    background-color: #fff;
+    &:after {
+      width: 20px;
+      height: calc(100% - 14px);
+      background-image: linear-gradient(to bottom, #c6c6c6 0%, #c6c6c6 50%, transparent 50%);
+      background-size: 1px 13px;
+      background-repeat: repeat-y;
+      position: absolute;
+      top: -55px;
+      left: 0;
+      content: '';
+    }
+  }
+}

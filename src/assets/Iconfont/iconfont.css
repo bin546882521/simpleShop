@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2927757 */
+  src: url('iconfont.woff2?t=1637904785436') format('woff2'),
+       url('iconfont.woff?t=1637904785436') format('woff'),
+       url('iconfont.ttf?t=1637904785436') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-month:before {
+  content: "\e616";
+}
+
+.icon-card:before {
+  content: "\e615";
+}
+
+.icon-dollar:before {
+  content: "\e613";
+}
+
+.icon-payitem:before {
+  content: "\e614";
+}
+
+.icon-office:before {
+  content: "\e611";
+}
+
+.icon-home:before {
+  content: "\e612";
+}
+
+.icon-language:before {
+  content: "\e610";
+}
+
+.icon-cards:before {
+  content: "\e60d";
+}
+
+.icon-logout:before {
+  content: "\e60e";
+}
+
+.icon-bell:before {
+  content: "\e60f";
+}
+
+.icon-key:before {
+  content: "\e60c";
+}
+
+.icon-payment:before {
+  content: "\e609";
+}
+
+.icon-orders:before {
+  content: "\e60a";
+}
+
+.icon-address:before {
+  content: "\e60b";
+}
+
+.icon-Vector:before {
+  content: "\e608";
+}
+
+.icon-shop:before {
+  content: "\e607";
+}
+
+.icon-favorite:before {
+  content: "\e603";
+}
+
+.icon-account:before {
+  content: "\e604";
+}
+
+.icon-cart:before {
+  content: "\e605";
+}
+
+.icon-explore:before {
+  content: "\e606";
+}
+

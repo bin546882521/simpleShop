@@ -1,0 +1,66 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#app {
+  height: 100%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#app .van-field {
+  background: #f3f3f3;
+  border-radius: 5px;
+}
+#app .van-field .van-field__control {
+  height: 28px;
+}
+#app .van-search .van-field__left-icon {
+  align-items: center;
+  display: flex;
+}
+#app .van-search .van-field__left-icon .van-icon-search {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(109, 56, 5, 0.57);
+}
+#app .van-search .van-search__content {
+  border-radius: 5px;
+}
+#app .van-search .van-field .van-field__control {
+  height: 35px;
+}
+#app ::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #ac8e71;
+}
+#app ::-webkit-scrollbar {
+  display: none;
+}
+#app .van-hairline--bottom::after {
+  border-bottom-width: 0;
+}
+#app .van-stepper--round .van-stepper__minus,
+#app .van-stepper--round .van-stepper__plus {
+  color: #6d3805;
+  font-weight: bold;
+}
+#app .van-step--vertical .van-step__circle-container {
+  top: 76px;
+}
+#app .van-step--vertical .van-step__line {
+  background-color: #fff;
+}
+#app .van-step--vertical .van-step__line:after {
+  width: 20px;
+  height: calc(100% - 14px);
+  background-image: linear-gradient(to bottom, #c6c6c6 0%, #c6c6c6 50%, transparent 50%);
+  background-size: 1px 13px;
+  background-repeat: repeat-y;
+  position: absolute;
+  top: -55px;
+  left: 0;
+  content: '';
+}

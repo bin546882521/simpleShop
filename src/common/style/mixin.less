@@ -1,0 +1,121 @@
+@import './base.less';
+@primary: #1baeae; // 主题色
+@orange: #ff5e00;
+@brown: #7f4e1d;
+@bc: #f7f7f7;
+@fc: #fff;
+@title-left: #6d3805;
+@orange-thin: #fff4e9;
+
+// // 背景图片地址和大小
+.bis(@url) {
+  background-image: url(@url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+// //圆角
+.borderRadius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// //1px底部边框
+.border-1px(@color) {
+  position: relative;
+  &:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid @color;
+    content: '';
+  }
+}
+// //定位全屏
+.allcover {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+// //定位上下左右居中
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// //定位上下居中
+.ct {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//垂直居中
+.discenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//上下居中
+.disAlignCenter {
+  display: flex;
+  align-items: center;
+}
+//
+.disbottom {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.disbetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.discolumn {
+  display: flex;
+  flex-direction: column;
+}
+// //定位左右居中
+.cl {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// //宽高
+.wh(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+// //字体大小，颜色
+.sc(@size, @color) {
+  font-size: @size;
+  color: @color;
+}
+
+.boxSizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// //flex 布局和 子元素 对其方式
+.fj(@type: space-between) {
+  display: flex;
+  justify-content: @type;
+}
+
+.im(@width,@top) {
+  width: @width;
+  margin-top: @top;
+}

@@ -46,7 +46,7 @@
           <van-icon name="arrow" />
         </div>
       </li>
-      <li @click="goTo('/about')">
+      <li @click="logout('/login')">
         <div class="profile-left">
           <van-icon class="iconfont" class-prefix="icon" name="logout" size="22" />
           <span>Logout</span>
@@ -71,25 +71,17 @@ export default {
     const route = useRoute();
     const store = useStore();
     const type = ref(route.meta.title);
-    const checked = ref(true);
-    const list = ref([
-      {
-        id: '1',
-        name: '张三',
-        tel: '13000000000',
-      },
-      {
-        id: '2',
-        name: '李四',
-        tel: '1310000000',
-      },
-    ]);
+    const checked: any = ref(true);
     // const onAdd = () => Toast('新增');
-    const goTo = (r, query) => {
+    const goTo = (r: string, query: any) => {
       console.log(r);
       router.push({ path: r, query: query || {} });
     };
-    const onUpdateValue = (newValue) => {
+    const logout = () => {
+      router.push({ path: '/login' });
+      store.commit('setLogin', false);
+    };
+    const onUpdateValue = (newValue: Boolean) => {
       Dialog.confirm({
         title: '提醒',
         message: '是否切换开关？',
@@ -100,9 +92,9 @@ export default {
     return {
       checked,
       type,
-      list,
       goTo,
       onUpdateValue,
+      logout,
     };
   },
 };

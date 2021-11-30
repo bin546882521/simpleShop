@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, Router, } from 'vue-router';
 
 import BaseLayout from '@/layout/baseLayout.vue';
-import Login from '@/views/account/login.vue';
-import Register from '@/views/register.vue';
+import Welcome from '@/views/welcome.vue';
+import Register from '@/views/account/register.vue';
 import ShopIndex from '@/views/shop/index.vue';
 import ShopDetail from '@/views/shop/shopDetail.vue';
 import ExploreIndex from '@/views/explore/index.vue';
@@ -21,7 +21,6 @@ import EditAddress from '@/views/account/address/editAddress.vue';
 import Orders from '@/views/account/orders/orders.vue';
 import Payment from '@/views/account/payment/payMent.vue';
 import Success from '../views/account/payment/success.vue'
-import store from '@/store';
 
 const routes = [
   {
@@ -211,7 +210,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login,
+    component: Welcome,
     meta: {
       title: '登录',
     },

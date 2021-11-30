@@ -67,7 +67,7 @@ export default {
       console.log(store.state.shop.cart);
     };
     const checkOut = () => {
-      console.log('asdasd');
+      router.push({ path: '/account/payment' });
     };
     return {
       screenData,

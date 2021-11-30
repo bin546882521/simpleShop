@@ -34,7 +34,7 @@
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { onMounted, reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import navBar from '@/components/navBar.vue';
 import pear from '@/assets/images/pear.png';
@@ -42,6 +42,7 @@ import { shopCommodityLsit } from '@/mock/data';
 import goodsList from '@/components/goodsList.vue';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
+import { getCommodityDetail } from '@/api/index';
 export default {
   components: {
     navBar,
@@ -52,8 +53,12 @@ export default {
     const route = useRoute();
     const num = ref(1);
     const store = useStore();
-    const commodity = ref(JSON.parse(route.query.good));
-    console.log(commodity.value.name);
+    const cid = route.query.good;
+    console.log(cid);
+    const commodity = ref({});
+    onMounted(() => {
+      commodityData();
+    });
     const commodityLsit = ref(shopCommodityLsit);
     const goDetail = (item) => {
       router.push({ path: '/shopDetail' });
@@ -70,19 +75,29 @@ export default {
       console.log(store.state.user.userinfo);
     };
     const addCart = () => {
-      // console.log(num.value);
       commodity.value.num = num.value;
       console.log(commodity.value.num);
       Toast.success('添加成功,在购物车等亲~');
       store.commit('setShopInfo', commodity.value);
     };
+    const commodityData = async () => {
+      let params = {
+        cid: cid,
+      };
+      const res = await getCommodityDetail(params);
+      console.log(res);
+      if (res.data) {
+        commodity.value = res.data.commodity[0];
+      }
+      console.log(commodity.value);
+    };
     return {
       pear,
       num,
-      addCart,
       commodity,
       commodityLsit,
       shopCommodityLsit,
+      addCart,
       goDetail,
       switchFav,
     };

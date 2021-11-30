@@ -25,7 +25,7 @@
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import navBar from '@/components/navBar.vue';
+import navBar from 'comps/navBar.vue';
 import { Toast } from 'vant';
 export default {
   components: {
@@ -36,18 +36,6 @@ export default {
     const route = useRoute();
     const store = useStore();
     const type = ref(route.meta.title);
-    const list = ref([
-      {
-        id: '1',
-        name: '张三',
-        tel: '13000000000',
-      },
-      {
-        id: '2',
-        name: '李四',
-        tel: '1310000000',
-      },
-    ]);
     // const onAdd = () => Toast('新增');
     const goTo = (r, query) => {
       console.log(r);
@@ -55,7 +43,6 @@ export default {
     };
     return {
       type,
-      list,
       goTo,
     };
   },

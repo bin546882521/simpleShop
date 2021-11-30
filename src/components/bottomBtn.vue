@@ -10,15 +10,7 @@
     >
       {{ firstFont }}
     </van-button>
-    <van-button
-      round
-      block
-      type="primary"
-      native-type="submit"
-      class="second-btn"
-      @click="secondNext"
-      v-if="show"
-    >
+    <van-button round block type="primary" class="second-btn" @click="secondNext" v-if="show">
       {{ secondFont }}
     </van-button>
   </div>

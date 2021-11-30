@@ -8,12 +8,11 @@
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import navBar from '@/components/navBar.vue';
-import registerFirst from '@/components/registerFirst.vue';
-import loginFirst from '@/components/loginFirst.vue';
+import navBar from 'comps/navBar.vue';
+import registerFirst from 'comps/registerFirst.vue';
+import loginFirst from 'comps/loginFirst.vue';
 import { Toast } from 'vant';
 import { useStore } from 'vuex';
-import { getServerTime } from '@/api/index';
 export default {
   components: {
     navBar,
@@ -32,26 +31,12 @@ export default {
       console.log(store.state.user.userinfo);
       router.push({ path: '/' });
     };
-    // const init = async () => {
-    //   Toast.loading({
-    //     message: '加载中...',
-    //     forbidClick: true
-    //   });
-    //   const { id } = route.query
-    //   const { data } = await getOrderDetail(id)
-    //   state.detail = data
-    //   Toast.clear()
-    // }
-    // const goHome = async () => {
-    //   let res = await getServerTime();
-    //   console.log('res', res);
-    // };
-    const signUp = (data) => {
+    const signUp = () => {
       type.value = 'Sign up';
       console.log(type);
       // router.push({path:'/register',query: {type:data}})
     };
-    const login = (data) => {
+    const login = () => {
       type.value = 'Sign in';
     };
     return {

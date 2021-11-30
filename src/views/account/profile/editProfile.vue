@@ -9,15 +9,10 @@
           :type="name"
           name="name"
           placeholder="name"
-          :rules="[{ required: true, message: '请输入账号' }]"
+          disabled
         >
         </van-field>
-        <van-field
-          v-model="phone"
-          name="phone"
-          placeholder="Phone Number"
-          :rules="[{ required: true, message: '请填写手机号码' }]"
-        >
+        <van-field v-model="phone" name="phone" placeholder="Phone Number" disabled>
           <template #label>
             <div class="country-select">
               <van-image :src="sweden" />
@@ -42,7 +37,7 @@ export default {
     navBar,
     bottomBtn,
   },
-  setup(props, { emit }) {
+  setup() {
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
@@ -50,13 +45,10 @@ export default {
     const state = reactive(store.state.user.userinfo);
     console.log(state);
 
-    const photoNumber = ref('');
-    const password = ref('');
-    const passwordType = ref('password');
-
-    const onSubmit = (values) => {
+    const onSubmit = (values: {}) => {
       console.log('submit', values);
       //  emit('goHome', 'true');
+      router.push({ path: '/account/changePassword' });
     };
     return {
       ...toRefs(state),

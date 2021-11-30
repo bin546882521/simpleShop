@@ -36,7 +36,10 @@
           v-model="conPassword"
           name="conPassword"
           placeholder="Confirm Password"
-          :rules="[{ required: true, message: '请确认密码' }]"
+          :rules="[
+            { required: true, message: '请确认密码' },
+            { validator: passValidator, message: '密码不一致' },
+          ]"
         >
           <template #left-icon>
             <van-icon class="iconfont" class-prefix="icon" name="Vector" color="#FF5E00" />
@@ -46,7 +49,12 @@
           </template>
         </van-field>
       </van-cell-group>
-      <bottom-btn firstFont="Confirm" secondFont="Back To Sign In" show="true"></bottom-btn>
+      <bottom-btn
+        firstFont="Confirm"
+        secondFont="Back To Sign In"
+        show="true"
+        @secondNext="signIn"
+      ></bottom-btn>
     </van-form>
   </div>
 </template>
@@ -56,31 +64,55 @@ import navBar from '@/components/navBar.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { delayToast } from 'utils/common';
 export default {
   components: {
     navBar,
     bottomBtn,
   },
-  setup(props, { emit }) {
+  setup() {
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
-    const type = ref(route.meta.title);
-
     const state = reactive({
+      type: route.meta.title,
       password: store.state.user.userinfo.password,
       newPassword: '',
       conPassword: '',
     });
-    console.log(state);
-    const onSubmit = (values) => {
-      console.log('submit', values);
-      //  emit('goHome', 'true');
+    const passValidator = (val: string) => {
+      return val == state.newPassword ? true : false;
+    };
+    //const onSubmit: (data: { conPassword: string }) => {
+    //console.log('submit', data.conPassword);
+    // const toast = Toast.loading({
+    //   message: '加载中...',
+    //   forbidClick: true,
+    //   loadingType: 'spinner',
+    // });
+    // setTimeout(() => {
+    //   toast.clear();
+    //   store.commit('setUserPassword', data.conPassword);
+    //
+    //   console.log(store.state.user.userinfo.password);
+    // }, 3000);
+    //  emit('goHome', 'true');
+    //};
+    const onSubmit = (data: { conPassword: string }) => {
+      delayToast(() => {
+        store.commit('setUserPassword', data.conPassword);
+        state.password = store.state.user.userinfo.password;
+        console.log(state.password);
+      }, 3000);
+    };
+    const signIn = () => {
+      router.push({ path: '/login' });
     };
     return {
       ...toRefs(state),
       onSubmit,
-      type,
+      passValidator,
+      signIn,
     };
   },
 };

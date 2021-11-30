@@ -6,18 +6,18 @@
         <div class="card-content">
           <div class="card-title">Card number</div>
           <van-field
-            v-model="name"
-            :type="password"
-            name="password"
-            placeholder="name"
-            :rules="[{ required: true, message: '请输入账号' }]"
+            v-model="cardNumber"
+            type="password"
+            name="cardNumber"
+            placeholder="cardNumber"
+            :rules="[{ required: true, message: '请输入卡账号' }]"
           >
           </van-field>
         </div>
         <div class="card-content">
           <div class="card-title">Expiry Date</div>
           <van-field
-            v-model="result"
+            v-model="cardDate"
             readonly
             name="calendar"
             placeholder="选择日期"
@@ -27,11 +27,11 @@
         <div class="card-content">
           <div class="card-title">CCV</div>
           <van-field
-            v-model="password"
+            v-model="cardCcv"
             type="password"
-            name="密码"
-            placeholder="password"
-            :rules="[{ required: true, message: '请输入账号' }]"
+            name="ccv"
+            placeholder="ccv"
+            :rules="[{ required: true, message: '请输入验证码' }]"
           >
           </van-field>
         </div>
@@ -47,7 +47,6 @@ import navBar from '@/components/navBar.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
 export default {
   components: {
     navBar,
@@ -57,34 +56,26 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
-    const type = ref(route.meta.title);
-
-    const state = reactive(store.state.user.userinfo);
-    const result = ref('');
-    const showCalendar = ref(false);
-    const onConfirm = (date) => {
-      result.value = `${date.getMonth() + 1}/${date.getDate()}`;
-      showCalendar.value = false;
+    const state = reactive({
+      type: route.meta.title,
+      cardNumber: '',
+      cardDate: '',
+      cardCcv: '',
+      showCalendar: false,
+    });
+    const onConfirm = (date: any) => {
+      state.cardDate = `${date.getMonth() + 1}/${date.getDate()}`;
+      state.showCalendar = false;
     };
-    console.log(state);
-
-    const photoNumber = ref('');
-    const password = ref('1231');
-    const passwordType = ref('password');
-
-    const onSubmit = (values) => {
+    const onSubmit = (values: any) => {
       console.log('submit', values);
-      //  emit('goHome', 'true');
+      // router.push({ path: '/account/cards', query: { empty: false } });
+      // router.push({path:'/account/cards',{empty:false}})
     };
     return {
       ...toRefs(state),
       onSubmit,
-      result,
-      password,
       onConfirm,
-      showCalendar,
-      sweden,
-      type,
     };
   },
 };

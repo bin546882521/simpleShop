@@ -56,7 +56,11 @@ export default {
   setup(props, { emit }) {
     const passwordType = ref('password');
     const store = useStore();
-    const state: { photoNumber: number; password: number; userInfo: {} } = reactive({
+    const state: {
+      photoNumber: string;
+      password: string;
+      userInfo: { phone: string; password: string };
+    } = reactive({
       photoNumber: '',
       password: '',
       userInfo: store.state.user.userinfo,
@@ -66,7 +70,7 @@ export default {
       console.log(passwordType);
       passwordType.value = passwordType.value === 'password' ? 'text' : 'password';
     };
-    const onSubmit = (values: { photoNumber: number; password: number }) => {
+    const onSubmit = (values: { photoNumber: string; password: string }) => {
       console.log('submit', values);
       if (
         values.photoNumber != state.userInfo.phone ||

@@ -33,26 +33,27 @@
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import goodsList from '@/components/goodsList.vue';
+import goodsList from 'comps/goodsList.vue';
 import { useRoute, useRouter } from 'vue-router';
-import { shopVariety, shopCommodityLsit } from '@/mock/data';
+// import { shopVariety, shopCommodityLsit } from '@/mock/data';
+import { getShopVariety, getShopCommodityLsit } from '@/api/index';
 export default {
   components: {
     goodsList,
   },
   setup() {
-    const value = ref('');
     const router = useRouter();
     const store = useStore();
     onMounted(() => {
-      console.log(store.state.demo.count);
+      shopVarietyData();
+      shopCommodityLsitData();
     });
     const state = reactive({
+      value: '',
       code: '',
-      variety: shopVariety,
-      shopCommodityLsit: shopCommodityLsit,
+      variety: [],
+      shopCommodityLsit: [],
     });
-    const list = shopCommodityLsit;
     const goLogin = () => {
       router.push({ path: '/login' });
     };
@@ -60,17 +61,30 @@ export default {
       router.push({ path: '/explore' });
     };
     const goDetail = (data) => {
-      router.push({ path: '/shopDetail', query: { good: JSON.stringify(data) } });
+      // router.push({ path: '/shopDetail', query: { good: JSON.stringify(data) } });
+      router.push({ path: '/shopDetail', query: { good: data.cid } });
+    };
+    const shopVarietyData = async () => {
+      const res = await getShopVariety();
+      console.log(res);
+      if (res.data) {
+        state.variety = res.data.shopVariety;
+      }
+    };
+    const shopCommodityLsitData = async () => {
+      const res = await getShopCommodityLsit();
+      console.log(res);
+      if (res.data) {
+        state.shopCommodityLsit = res.data.shopCommodityLsit;
+      }
     };
     return {
       ...toRefs(state),
-      shopVariety,
-      shopCommodityLsit,
-      value,
+      shopVarietyData,
+      shopCommodityLsitData,
       goLogin,
       explore,
       goDetail,
-      list,
     };
   },
 };
@@ -79,14 +93,9 @@ export default {
 <style lang="less" scoped>
 @import '@/common/style/mixin';
 .home {
-  // width: 100%;
-  // height: auto;
   .page_header {
-    // display: flex;
-    // align-items: center;
     .page_title {
       .good-header {
-        // background: #f9f9f9;
         height: 50px;
         line-height: 50px;
         margin-top: 30px;

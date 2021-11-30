@@ -16,29 +16,35 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, watch, onMounted } from 'vue';
+import { ref, defineComponent, watch, onMounted, onBeforeMount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { menus } from '@/mock/data';
+import { getMenus } from '@/api/index';
 export default defineComponent({
   name: 'Index',
   setup() {
     const route = useRoute();
     const router = useRouter();
     const active = ref(0);
-    const items = menus;
+    const menus = ref([]);
     watch([route], () => {
-      // console.log(route);
       setActive();
     });
     onMounted(() => {
       setActive();
+      menusData();
     });
+    const menusData = async () => {
+      const res = await getMenus();
+      if (res.data) {
+        menus.value = res.data.menus;
+      }
+    };
     const setActive = () => {
-      menus.map((v: { url: string }, index: number) => {
+      menus.value.map((v: { url: string }, index: number) => {
         if (v.url === route.path) return (active.value = index);
       });
     };
-    return { menus, active, setActive };
+    return { menus, active, setActive, menusData };
   },
 });
 </script>

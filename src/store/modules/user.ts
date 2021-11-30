@@ -1,20 +1,31 @@
+import { setLocal, getLocal } from 'utils/common'
+export interface FavState {
+  fav: number,
+  cid: number
+}
+
 export interface UserState {
-  name: string;
-  userinfo: {};
+  userinfo: {
+    name:string,
+    phone:string,
+    password:string,
+    login:Boolean,
+    favorite:Array<FavState>,
+  };
 }
 
 export default {
   state: {
     userinfo: {
-      name: 'chenchen',
-      phone: '18268217720',
-      password: '1231',
-      login:true,
-      favorite:[]
+      name: 'admin',
+      phone: '01511234567',
+      password: '123456',
+      login: false,
+      favorite: []
     },
   },
   mutations: {
-    setFavorite(state:UserState,data:{}){
+    setFavorite(state:UserState,data:FavState){
       if(data.fav == 0){
        state.userinfo.favorite.forEach((item,index)=>{
          if(item.cid == data.cid){
@@ -25,17 +36,18 @@ export default {
         state.userinfo.favorite.push(data);
       }
     },
-    setFav(state,data){
+    setFav(state:UserState,data:{}){
       state.userinfo.favorite = data
     },
     setLogin(state: UserState,data:Boolean){
       state.userinfo.login = data;
+      setLocal('userinfo',state.userinfo);
     },
-    setUserInfo(state: UserState, data: {}) {
+    setUserInfo(state: UserState, data: UserState) {
       state.userinfo = data;
     },
-    // setUserInfo(state: UserState, data: string) {
-    //   state.name = data;
-    // },
+    setUserPassword(state: UserState, data: string) {
+      state.userinfo.password = data;
+    },
   },
 };

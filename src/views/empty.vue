@@ -9,9 +9,9 @@
   </div>
 </template>
 <script lang="ts">
-import empty from '@/assets/images/empty.png';
+import empty from 'assets/images/empty.png';
 import { useRoute, useRouter } from 'vue-router';
-import bottomBtn from '@/components/bottomBtn.vue';
+import bottomBtn from 'comps/bottomBtn.vue';
 export default {
   components: {
     bottomBtn,

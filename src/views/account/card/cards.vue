@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <nav-bar :title="type" addShow="true" @add="addCard"></nav-bar>
-    <div class="card-empty" v-if="empty">
+    <div class="card-empty" v-if="empty == true">
       <van-image :src="cardBackground" />
       <div>
         <p class="title">No Saved Card</p>
@@ -51,8 +51,9 @@ export default {
     const router = useRouter();
     const store = useStore();
     const type = ref(route.meta.title);
-    const empty = ref(true);
+    const empty = ref(false);
     console.log(store.state.shop.cart);
+    console.log(route.query.empty);
 
     const commodityLsit = ref([
       {

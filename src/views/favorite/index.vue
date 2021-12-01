@@ -35,7 +35,11 @@ export default {
       definite: 'Start fall in love with some good<br />goods',
     };
     const empty = ref(true);
-    const commodityLsit = ref(JSON.parse(JSON.stringify(store.state.user.userinfo.favorite)));
+    const commodityLsit = ref([]);
+    if (typeof store.state.user.userinfo.favorite != 'undefined') {
+      commodityLsit.value = JSON.parse(JSON.stringify(store.state.user.userinfo.favorite));
+      console.log(commodityLsit.value);
+    }
     if (commodityLsit.value.length > 0) {
       empty.value = false;
     }

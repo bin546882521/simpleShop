@@ -20,8 +20,7 @@
 </template>
 <script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
-import navBar from '@/components/navBar.vue';
-import bottomBtn from '@/components/bottomBtn.vue';
+import { bottomBtn, navBar } from 'comps';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import phoneInput from 'comps/phoneInput.vue';

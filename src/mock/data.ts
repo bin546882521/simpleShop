@@ -1,10 +1,10 @@
-import apple from 'assets/images/apple.png';
-import banana from 'assets/images/banana.png';
-import pear from 'assets/images/pear.png';
-import vegtables from 'assets/images/vegtables.png';
-import fruits from 'assets/images/fruits.png';
-import meat from 'assets/images/meat.png';
-import adver from 'assets/images/adver.png';
+import apple from 'assets/apple.png';
+import banana from 'assets/banana.png';
+import pear from 'assets/pear.png';
+import vegtables from 'assets/vegtables.png';
+import fruits from 'assets/fruits.png';
+import meat from 'assets/meat.png';
+import adver from 'assets/adver.png';
 const menus: Array<{ name: string; url: string; icon: string }> = [
   {
     name: 'Shop',
@@ -66,7 +66,8 @@ const shopCommodityLsit = [
     price: '4.99',
     num: 0,
     fav: 0,
-    introduce:' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
+    introduce:
+      ' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
   },
   {
     cid: 2,
@@ -75,7 +76,8 @@ const shopCommodityLsit = [
     price: '5.99',
     num: 0,
     fav: 0,
-    introduce:' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
+    introduce:
+      ' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
   },
   {
     cid: 3,
@@ -84,7 +86,8 @@ const shopCommodityLsit = [
     price: '4.99',
     num: 0,
     fav: 0,
-    introduce:' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
+    introduce:
+      ' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
   },
   {
     cid: 4,
@@ -93,7 +96,8 @@ const shopCommodityLsit = [
     price: '5.99',
     num: 0,
     fav: 0,
-    introduce:' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
+    introduce:
+      ' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
   },
   {
     cid: 5,
@@ -102,7 +106,8 @@ const shopCommodityLsit = [
     price: '4.99',
     num: 0,
     fav: 0,
-    introduce:' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
+    introduce:
+      ' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
   },
   {
     cid: 6,
@@ -111,7 +116,8 @@ const shopCommodityLsit = [
     price: '5.99',
     num: 0,
     fav: 0,
-    introduce:' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
+    introduce:
+      ' Golen Ripe Alphonsa mangoes delivered to yor house in the most hygenic way ever Best for eating plain but can also be made intoshakes and cakes.',
   },
 ];
 const exploreCommodityLsit = [
@@ -249,5 +255,5 @@ const exploreMenus = [
     cid: 7,
     lists: [],
   },
-]
+];
 export { menus, shopVariety, shopCommodityLsit, explore, exploreCommodityLsit, exploreMenus };

@@ -24,7 +24,7 @@
 <script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import navBar from 'comps/navBar.vue';
+import { navBar } from 'comps';
 const router = useRouter();
 const route = useRoute();
 const type = ref(route.meta.title);

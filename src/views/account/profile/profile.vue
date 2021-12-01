@@ -59,7 +59,7 @@
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import navBar from '@/components/navBar.vue';
+import { navBar } from 'comps';
 import { Dialog } from 'vant';
 const router = useRouter();
 const route = useRoute();

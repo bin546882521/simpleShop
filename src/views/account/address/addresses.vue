@@ -34,10 +34,10 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
-import navBar from '@/components/navBar.vue';
+import { navBar } from 'comps';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import cardBackground from '@/assets/images/cardBackground.png';
+import cardBackground from 'assets/cardBackground.png';
 export default {
   components: {
     navBar,

@@ -8,9 +8,7 @@
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import navBar from 'comps/navBar.vue';
-import registerFirst from 'comps/registerFirst.vue';
-import loginFirst from 'comps/loginFirst.vue';
+import { registerFirst, navBar, loginFirst } from 'comps';
 import { Toast } from 'vant';
 import { useStore } from 'vuex';
 export default {
@@ -32,7 +30,6 @@ export default {
     };
     const signUp = () => {
       type.value = 'Sign up';
-      // router.push({path:'/register',query: {type:data}})
     };
     const login = () => {
       type.value = 'Sign in';

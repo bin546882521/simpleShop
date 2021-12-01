@@ -36,10 +36,9 @@
 <script lang="ts">
 import { onMounted, reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import navBar from '@/components/navBar.vue';
-import pear from '@/assets/images/pear.png';
+import { goodsList, navBar } from 'comps';
+import pear from 'assets/pear.png';
 import { shopCommodityLsit } from '@/mock/data';
-import goodsList from '@/components/goodsList.vue';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
 import { getCommodityDetail } from '@/api/index';

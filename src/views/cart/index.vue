@@ -14,14 +14,11 @@
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import navBar from '@/components/navBar.vue';
-import avocadosmall from '@/assets/images/avocadosmall.png';
-import pear from '@/assets/images/pear.png';
+import avocadosmall from 'assets/avocadosmall.png';
+import pear from 'assets/pear.png';
 import { useStore } from 'vuex';
-import cartList from '@/components/cartList.vue';
-import bottomBtn from '@/components/bottomBtn.vue';
-import Screen from '@/components/screen.vue';
-import favbigimage from '@/assets/images/favbigimage.png';
+import { bottomBtn, cartList, navBar, Screen } from 'comps';
+import favbigimage from 'assets/favbigimage.png';
 import { Toast } from 'vant';
 export default {
   components: {

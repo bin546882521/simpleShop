@@ -32,8 +32,8 @@
 </template>
 <script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
-import sweden from 'assets/images/SE-Sweden-Flag-icon.png';
-import china from 'assets/images/china.jpg';
+import sweden from 'assets/SE-Sweden-Flag-icon.png';
+import china from 'assets/china.jpg';
 
 const show = ref(false);
 const imageType = ref(china);

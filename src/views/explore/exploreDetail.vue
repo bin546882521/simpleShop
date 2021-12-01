@@ -32,7 +32,7 @@
 <script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import navBar from '@/components/navBar.vue';
+import { navBar } from 'comps';
 import { exploreMenus } from '@/mock/data';
 
 const value = ref('');

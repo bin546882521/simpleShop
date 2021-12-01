@@ -10,9 +10,9 @@
 </template>
 <script lang="ts" setup>
 // import empty from 'assets/images/empty.png';
-import empty from 'assets/images/empty.png';
+import empty from 'assets/empty.png';
 import { useRoute, useRouter } from 'vue-router';
-import bottomBtn from 'comps/bottomBtn.vue';
+import { bottomBtn } from 'comps';
 const route = useRoute();
 const router = useRouter();
 const goRegister = (data: any) => {

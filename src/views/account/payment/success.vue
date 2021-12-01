@@ -13,10 +13,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import success from '@/assets/images/success.png';
+import success from 'assets/success.png';
 import { useRoute, useRouter } from 'vue-router';
-import bottomBtn from '@/components/bottomBtn.vue';
-import Screen from '@/components/screen.vue';
+import { bottomBtn, Screen } from 'comps';
 
 const router = useRouter();
 const screenData = {

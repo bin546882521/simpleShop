@@ -38,11 +38,10 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
-import navBar from '@/components/navBar.vue';
-import bottomBtn from '@/components/bottomBtn.vue';
+import { bottomBtn, navBar } from 'comps';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
+import sweden from 'assets/SE-Sweden-Flag-icon.png';
 export default {
   components: {
     navBar,

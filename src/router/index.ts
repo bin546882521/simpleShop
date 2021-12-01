@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, Router, } from 'vue-router';
+import { createRouter, createWebHistory, Router } from 'vue-router';
 
 import BaseLayout from '@/layout/baseLayout.vue';
 import Welcome from '@/views/welcome.vue';
@@ -21,7 +21,7 @@ import EditAddress from '@/views/account/address/editAddress.vue';
 import Orders from '@/views/account/orders/orders.vue';
 import Payment from '@/views/account/payment/payMent.vue';
 import Empty from '@/views/empty.vue';
-import Success from '@/views/account/payment/success.vue'
+import Success from '@/views/account/payment/success.vue';
 
 const routes = [
   {
@@ -205,7 +205,7 @@ const routes = [
         meta: {
           title: 'success',
         },
-      }
+      },
     ],
   },
   {
@@ -240,8 +240,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 
-export default router
-
+export default router;

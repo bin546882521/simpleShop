@@ -14,9 +14,8 @@
 </template>
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router';
-import Screen from 'comps/screen.vue';
-import bottomBtn from 'comps/bottomBtn.vue';
-import illustration from 'assets/images/illustration.png';
+import { bottomBtn, Screen } from 'comps';
+import illustration from 'assets/illustration.png';
 const router = useRouter();
 const screenData = {
   imageUrl: illustration,

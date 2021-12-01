@@ -12,13 +12,10 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
-import favbigimage from 'assets/images/favbigimage.png';
+import favbigimage from 'assets/favbigimage.png';
 import { useRoute, useRouter } from 'vue-router';
-import cartList from 'comps/cartList.vue';
-import navBar from 'comps/navBar.vue';
-import bottomBtn from 'comps/bottomBtn.vue';
+import { bottomBtn, Screen, cartList, navBar } from 'comps';
 import { useStore } from 'vuex';
-import Screen from 'comps/screen.vue';
 import { Toast } from 'vant';
 export default {
   components: {

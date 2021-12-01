@@ -77,12 +77,12 @@
 import { reactive, ref, toRefs, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import navBar from '@/components/navBar.vue';
-import orderEmpty from '@/assets/images/orderEmpty.png';
-import ordeHistory from '@/assets/images/orderHistory.png';
-import orderFirst from '@/assets/images/orderFirst.png';
-import orderSecond from '@/assets/images/orderSecond.png';
-import orderThird from '@/assets/images/orderThird.png';
+import { navBar } from 'comps';
+import orderEmpty from 'assets/orderEmpty.png';
+import ordeHistory from 'assets/orderHistory.png';
+import orderFirst from 'assets/orderFirst.png';
+import orderSecond from 'assets/orderSecond.png';
+import orderThird from 'assets/orderThird.png';
 import { Toast } from 'vant';
 import { Dialog } from 'vant';
 export default {

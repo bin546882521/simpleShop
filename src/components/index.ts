@@ -1,0 +1,9 @@
+export { default as bottomBtn } from './bottomBtn.vue';
+export { default as goodsList } from './goodsList.vue';
+export { default as cartList } from './cartList.vue';
+export { default as loginFirst } from './loginFirst.vue';
+export { default as navBar } from './navBar.vue';
+export { default as phoneInput } from './phoneInput.vue';
+export { default as registerFirst } from './registerFirst.vue';
+export { default as Screen } from './screen.vue';
+export { default as verificationCode } from './verificationCode.vue';

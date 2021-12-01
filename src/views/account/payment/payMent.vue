@@ -74,10 +74,9 @@
 </template>
 <script lang="ts" setup>
 import { reactive, ref, toRefs, onMounted } from 'vue';
-import navBar from '@/components/navBar.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import bottomBtn from '@/components/bottomBtn.vue';
+import { bottomBtn, navBar } from 'comps';
 
 const route = useRoute();
 const router = useRouter();

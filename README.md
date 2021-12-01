@@ -1,6 +1,8 @@
 # simple store
 
-## Vue3.0 + Typescript
+## 项目介绍
+
+是一个电商 H5 页面前端项目，基于 Vue3.0 + Typescript + axios + less + vant + vue-router + iconfont 实现，使用 mockjs 数据进行开发，主要包括首页、分类页面、我的页面、购物车等
 
 📖 `Vue3.0` 相关文档：
 
@@ -17,10 +19,14 @@
 
 ```shell
 yarn install
+or
+npm run install
 ```
 
 ## Compiles and hot-reloads for development
 
 ```shell
 yarn dev
+or
+npm run dev
 ```

@@ -146,6 +146,7 @@ export default {
         phone: state.phoneNumber,
         password: state.password,
         login: false,
+        favorite: [],
       };
       store.commit('setUserInfo', data);
     };

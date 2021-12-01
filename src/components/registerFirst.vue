@@ -14,38 +14,13 @@
             placeholder="Name Surname"
             :rules="[{ required: true, message: '请输入账号' }]"
           />
-          <van-field
-            v-model="phoneNumber"
-            name="phoneNumber"
-            placeholder="Phone Number"
-            :rules="[
-              { required: true, message: '请填写手机号码' },
-              { validator: phoneValidator, message: '请输入正确手机号' },
-            ]"
-          >
-            <template #label>
-              <div class="country-select" @click="show = true">
-                <van-image :src="imageType" width="35px" />
-                <van-icon name="play" size="12" class="arrows" color="#828282" />
-              </div>
-            </template>
-          </van-field>
-          <van-action-sheet v-model:show="show" cancel-text="取消" close-on-click-action>
-            <div
-              class="action-title"
-              v-for="(item, index) in actionLsit"
-              :key="index"
-              @click="onSelect(index)"
-            >
-              <van-image :src="item.imageUrl" width="30px" />
-              <span>{{ item.country }}</span>
-            </div>
-          </van-action-sheet>
+          <phone-Input></phone-Input>
         </div>
         <div v-if="registerType == 2">
           <van-field
             v-model="password"
             name="password"
+            :type="passwordType"
             placeholder="Password"
             :rules="[{ required: true, message: '请输入密码' }]"
           >
@@ -53,12 +28,16 @@
               <van-icon class="iconfont" class-prefix="icon" name="Vector" color="#FF5E00" />
             </template>
             <template #right-icon>
-              <van-icon name="eye-o" size="24px" color="#FF5E00" />
+              <span @click="switchPasswordType">
+                <van-icon name="eye-o" size="24px" color="#FF5E00" v-if="passwordType === 'text'" />
+                <van-icon name="closed-eye" v-else />
+              </span>
             </template>
           </van-field>
           <van-field
             class="secondInput"
             v-model="conPassword"
+            :type="passwordType"
             name="conPassword"
             placeholder="Confirm Password"
             :rules="[
@@ -70,7 +49,10 @@
               <van-icon class="iconfont" class-prefix="icon" name="Vector" color="#FF5E00" />
             </template>
             <template #right-icon>
-              <van-icon name="eye-o" size="24px" color="#FF5E00" />
+              <span @click="switchPasswordType">
+                <van-icon name="eye-o" size="24px" color="#FF5E00" v-if="passwordType === 'text'" />
+                <van-icon name="closed-eye" v-else />
+              </span>
             </template>
           </van-field>
         </div>
@@ -96,13 +78,13 @@ import verficationCode from '../components/verificationCode.vue';
 import registerFirst from '@/assets/images/registerFirst.png';
 import registerSecond from '@/assets/images/registerSecond.png';
 import registerThird from '@/assets/images/registerThird.png';
-import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
-import china from 'assets/images/china.jpg';
+import phoneInput from 'comps/phoneInput.vue';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
 export default {
   components: {
     verficationCode,
+    phoneInput,
   },
   setup(props, { emit }) {
     const store = useStore();
@@ -119,30 +101,17 @@ export default {
       btnFont: 'Next',
       sms: '',
       code: '',
-      show: false,
-      imageType: china,
+      passwordType: 'text',
     });
-    const actionLsit = [
-      {
-        imageUrl: china,
-        country: '中国',
-      },
-      {
-        imageUrl: sweden,
-        country: '瑞典',
-      },
-    ];
-    const phoneValidator = (val: string) =>
-      new Promise((resolve) => {
-        resolve(new RegExp(/^[1][3,4,5,7,8,9][0-9]{9}$/).test(val));
-      });
     const passValidator = (val: string) => {
       return val == state.password ? true : false;
     };
-    const onSubmit = (values: {}) => {
+    const onSubmit = (values: any) => {
+      if (values.phoneNumber) {
+        state.phoneNumber = values.phoneNumber;
+      }
       state.registerType++;
-      if (state.registerType == 1) {
-      } else if (state.registerType == 2) {
+      if (state.registerType == 2) {
         state.image = registerSecond;
         state.title = 'Enter the password';
         state.remark = 'For the security & safety please choose a <br/> password';
@@ -155,10 +124,6 @@ export default {
         getData();
         emit('goHome', 'true');
       }
-    };
-    const onSelect = (index: number) => {
-      state.show = false;
-      state.imageType = index == 0 ? china : sweden;
     };
     const getCode = (code: string) => {
       state.code = code;
@@ -190,17 +155,18 @@ export default {
     const onFailed = (errorInfo: string) => {
       console.log('failed', errorInfo);
     };
+    const switchPasswordType = () => {
+      state.passwordType = state.passwordType === 'password' ? 'text' : 'password';
+    };
     return {
-      actionLsit,
       ...toRefs(state),
       onSubmit,
       getCode,
       login,
-      phoneValidator,
       passValidator,
       onFailed,
       getData,
-      onSelect,
+      switchPasswordType,
     };
   },
 };
@@ -221,14 +187,6 @@ export default {
   .account {
     margin-bottom: 15px;
   }
-  .country-select {
-    display: flex;
-    align-items: center;
-    .arrows {
-      transform: rotate(90deg);
-      margin-left: 9px;
-    }
-  }
   .tag {
     font-size: 16px;
     line-height: 17px;
@@ -243,14 +201,6 @@ export default {
   }
   .secondInput {
     margin-top: 15px;
-  }
-  .action-title {
-    .discenter;
-    padding: 10px;
-    span {
-      .sc(15px,@title-left);
-      margin-left: 10px;
-    }
   }
 }
 </style>

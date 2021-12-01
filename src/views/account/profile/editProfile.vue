@@ -12,49 +12,29 @@
           disabled
         >
         </van-field>
-        <van-field v-model="phone" name="phone" placeholder="Phone Number">
-          <template #label>
-            <div class="country-select">
-              <van-image :src="sweden" />
-              <van-icon name="play" size="12" class="arrows" color="#828282" />
-            </div>
-          </template>
-        </van-field>
+        <phone-Input></phone-Input>
       </van-cell-group>
       <bottom-btn firstFont="update Profile"></bottom-btn>
     </van-form>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import navBar from '@/components/navBar.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
-export default {
-  components: {
-    navBar,
-    bottomBtn,
-  },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const store = useStore();
-    const type = ref(route.meta.title);
-    const state = reactive(store.state.user.userinfo);
+import phoneInput from 'comps/phoneInput.vue';
 
-    const onSubmit = (values: {}) => {
-      router.go(-1);
-    };
-    return {
-      ...toRefs(state),
-      onSubmit,
-      sweden,
-      type,
-    };
-  },
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
+const type = ref(route.meta.title);
+const state = reactive(store.state.user.userinfo);
+const onSubmit = (values: {}) => {
+  router.go(-1);
 };
+const { name } = toRefs(state);
 </script>
 <style lang="less" scoped>
 @import '@/common/style/mixin';

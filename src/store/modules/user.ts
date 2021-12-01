@@ -21,11 +21,11 @@ export default {
       phone: '01511234567',
       password: '123456',
       login: false,
-      favorite: []
+      favorite: [] 
     },
   },
   mutations: {
-    setFavorite(state:UserState,data:FavState){
+    setFavorite(state: UserState, data: FavState){
       if(data.fav == 0){
        state.userinfo.favorite.forEach((item,index)=>{
          if(item.cid == data.cid){
@@ -36,10 +36,10 @@ export default {
         state.userinfo.favorite.push(data);
       }
     },
-    setFav(state:UserState,data:{}){
+    setFav(state: UserState,data: {}){
       state.userinfo.favorite = data
     },
-    setLogin(state: UserState,data:Boolean){
+    setLogin(state: UserState,data: Boolean){
       state.userinfo.login = data;
       setLocal('userinfo',state.userinfo);
     },

@@ -32,10 +32,8 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
-import { useStore } from 'vuex';
 import goodsList from 'comps/goodsList.vue';
 import { useRoute, useRouter } from 'vue-router';
-// import { shopVariety, shopCommodityLsit } from '@/mock/data';
 import { getShopVariety, getShopCommodityLsit } from '@/api/index';
 export default {
   components: {
@@ -43,7 +41,6 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const store = useStore();
     onMounted(() => {
       shopVarietyData();
       shopCommodityLsitData();
@@ -66,14 +63,12 @@ export default {
     };
     const shopVarietyData = async () => {
       const res = await getShopVariety();
-      console.log(res);
       if (res.data) {
         state.variety = res.data.shopVariety;
       }
     };
     const shopCommodityLsitData = async () => {
       const res = await getShopCommodityLsit();
-      console.log(res);
       if (res.data) {
         state.shopCommodityLsit = res.data.shopCommodityLsit;
       }

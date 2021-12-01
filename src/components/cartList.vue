@@ -66,13 +66,10 @@ export default {
     };
     const addCart = (item) => {
       item.num = 1;
-      console.log(item);
       Toast.success('添加成功,在购物车等亲~');
       store.commit('setShopInfo', { ...item });
     };
     const onChange = (e, item) => {
-      console.log(e);
-      console.log(item);
       item.num = e;
       item.totalPrice = parseFloat(item.price * item.num).toFixed(2);
     };

@@ -43,11 +43,8 @@ export default {
     const store = useStore();
     const type = ref(route.meta.title);
     const state = reactive(store.state.user.userinfo);
-    console.log(state);
 
     const onSubmit = (values: {}) => {
-      console.log('submit', values);
-      //  emit('goHome', 'true');
       router.push({ path: '/account/changePassword' });
     };
     return {

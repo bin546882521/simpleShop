@@ -65,13 +65,10 @@ export default {
       password: '',
       userInfo: store.state.user.userinfo,
     });
-    console.log(store.state.user.userinfo);
     const switchPasswordType = () => {
-      console.log(passwordType);
       passwordType.value = passwordType.value === 'password' ? 'text' : 'password';
     };
     const onSubmit = (values: { photoNumber: string; password: string }) => {
-      console.log('submit', values);
       if (
         values.photoNumber != state.userInfo.phone ||
         values.password != state.userInfo.password

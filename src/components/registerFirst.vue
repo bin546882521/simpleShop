@@ -117,7 +117,6 @@ export default {
     };
     const onSubmit = (values: {}) => {
       state.registerType++;
-      console.log(state.registerType);
       if (state.registerType == 1) {
       } else if (state.registerType == 2) {
         state.image = registerSecond;
@@ -142,7 +141,6 @@ export default {
           loadingType: 'spinner',
         });
         getData();
-        console.log(store.state.user.userinfo);
         setTimeout(() => {
           toast.clear();
           emit('goHome', 'register');
@@ -161,12 +159,6 @@ export default {
     const login = () => {
       emit('login', 'Sign in');
     };
-    onMounted(() => {
-      console.log('--onMounted');
-    });
-    onUpdated(() => {
-      console.log('--onUpdated');
-    });
     const onFailed = (errorInfo) => {
       console.log('failed', errorInfo);
     };

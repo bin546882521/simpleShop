@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="account">
     <nav-bar :title="type"></nav-bar>
     <ul class="user-list">
       <li class="van-hairline--bottom" @click="goTo('/account/profile')">
@@ -21,31 +21,15 @@
     </ul>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useStore } from 'vuex';
 import navBar from 'comps/navBar.vue';
-import { Toast } from 'vant';
-export default {
-  components: {
-    navBar,
-  },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const store = useStore();
-    const type = ref(route.meta.title);
-    // const onAdd = () => Toast('新增');
-    const goTo = (r, query) => {
-      console.log(r);
-      router.push({ path: r, query: query || {} });
-    };
-    return {
-      type,
-      goTo,
-    };
-  },
+const router = useRouter();
+const route = useRoute();
+const type = ref(route.meta.title);
+const goTo = (r: string, query: any) => {
+  router.push({ path: r, query: query || {} });
 };
 </script>
 <style lang="less" scoped>

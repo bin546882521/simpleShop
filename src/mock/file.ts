@@ -60,7 +60,6 @@ export default [
       const commodity = shopCommodityLsit.filter((item:any) => {
         return item.cid == cid
       });
-      console.log(commodity);
       return {
         code: 200,
         data: {

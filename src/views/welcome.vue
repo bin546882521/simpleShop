@@ -12,38 +12,20 @@
     ></bottom-btn>
   </div>
 </template>
-<script lang="ts">
-import illustration from 'assets/images/illustration.png';
+<script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router';
 import Screen from 'comps/screen.vue';
 import bottomBtn from 'comps/bottomBtn.vue';
-// import { useCurrentInstance } from 'utils/common';
-export default {
-  components: {
-    Screen,
-    bottomBtn,
-  },
-  setup() {
-    const router = useRouter();
-    // const { proxy } = useCurrentInstance();
-    //getCurrentInstance().appContext.config.globalProperties.$Toast('this');
-    //proxy.$Toast('this');
-    const screenData = {
-      imageUrl: illustration,
-      title: 'Realax and shop',
-      definite:
-        'Shop online and get grocories <br> delivered from stores to your home <br> in as fast as 1 hour .',
-    };
-    const goRegister = (data: string) => {
-      console.log(data);
-      router.push({ path: 'register', query: { type: data } });
-    };
-    return {
-      screenData,
-      illustration,
-      goRegister,
-    };
-  },
+import illustration from 'assets/images/illustration.png';
+const router = useRouter();
+const screenData = {
+  imageUrl: illustration,
+  title: 'Realax and shop',
+  definite:
+    'Shop online and get grocories <br> delivered from stores to your home <br> in as fast as 1 hour .',
+};
+const goRegister = (data: string) => {
+  router.push({ path: 'register', query: { type: data } });
 };
 </script>
 <style lang="less" scoped>

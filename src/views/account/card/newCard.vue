@@ -68,7 +68,6 @@ export default {
       state.showCalendar = false;
     };
     const onSubmit = (values: any) => {
-      console.log('submit', values);
       // router.push({ path: '/account/cards', query: { empty: false } });
       // router.push({path:'/account/cards',{empty:false}})
     };

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="explore-detail">
     <nav-bar :title="name"></nav-bar>
     <van-search v-model="value" placeholder="Search" background="F3F3F3" />
     <van-tabs v-model:active="active" swipeable>
@@ -29,86 +29,20 @@
     </van-tabs>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import navBar from '@/components/navBar.vue';
-import { explore } from '@/mock/data';
-export default {
-  components: {
-    navBar,
-  },
-  setup() {
-    const value = ref('');
-    const active = ref(0);
-    const router = useRouter();
-    const route = useRoute();
-    const name = ref(route.query.name);
+import { exploreMenus } from '@/mock/data';
 
-    const categories = reactive([
-      {
-        categories_name: 'Fruits',
-        cid: 1,
-        lists: explore,
-      },
-      {
-        categories_name: 'Vegtables',
-        cid: 2,
-        lists: [],
-      },
-      {
-        categories_name: 'Meat',
-        cid: 3,
-        lists: [],
-      },
-      {
-        categories_name: 'Fish',
-        cid: 4,
-        lists: [],
-      },
-      {
-        categories_name: 'Fruits',
-        cid: 5,
-        lists: [],
-      },
-      {
-        categories_name: 'Fruits',
-        cid: 6,
-        lists: [],
-      },
-      {
-        categories_name: 'Fruits',
-        cid: 7,
-        lists: [],
-      },
-      {
-        categories_name: 'Fruits',
-        cid: 8,
-        lists: [],
-      },
-      {
-        categories_name: 'Fruits',
-        cid: 9,
-        lists: [],
-      },
-    ]);
-    const goHome = (data) => {
-      console.log(data);
-      router.push({ path: '/' });
-    };
-    const goDtail = (item) => {
-      router.push({ path: '/shopDetail' });
-    };
-    return {
-      value,
-      active,
-      name,
-      goHome,
-      categories,
-      goDtail,
-      explore,
-    };
-  },
+const value = ref('');
+const active = ref(0);
+const router = useRouter();
+const route = useRoute();
+const name = ref(route.query.name);
+const categories = reactive(exploreMenus);
+const goDetail = () => {
+  router.push({ path: '/shopDetail', query: { good: 1 } });
 };
 </script>
 <style lang="less" scoped>

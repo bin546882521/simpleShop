@@ -72,9 +72,7 @@ export default {
     const store = useStore();
     const type = ref(route.meta.title);
     const checked: any = ref(true);
-    // const onAdd = () => Toast('新增');
     const goTo = (r: string, query: any) => {
-      console.log(r);
       router.push({ path: r, query: query || {} });
     };
     const logout = () => {

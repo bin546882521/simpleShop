@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <van-image :src="success" />
+  <div class="empty">
+    <van-image :src="empty" />
     <div>
       <p class="title">Oops! Order Failed!</p>
       <p class="definite">Something went terribly wrong</p>
@@ -8,29 +8,19 @@
     <bottom-btn firstFont="Try Again" secondFont="Back Home" show="true"></bottom-btn>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
+// import empty from 'assets/images/empty.png';
 import empty from 'assets/images/empty.png';
 import { useRoute, useRouter } from 'vue-router';
 import bottomBtn from 'comps/bottomBtn.vue';
-export default {
-  components: {
-    bottomBtn,
-  },
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const goRegister = (data) => {
-      router.push({ path: 'register', query: { type: data } });
-    };
-    return {
-      empty,
-      goRegister,
-    };
-  },
+const route = useRoute();
+const router = useRouter();
+const goRegister = (data: any) => {
+  router.push({ path: 'register', query: { type: data } });
 };
 </script>
 <style lang="less" scoped>
-.home {
+.empty {
   margin: 0 25px;
   text-align: center;
   .van-image {

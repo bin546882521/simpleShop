@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="favorite">
     <nav-bar :title="type"></nav-bar>
     <div class="fav-empty" v-if="empty">
       <Screen :screenData="screenData"></Screen>
@@ -39,7 +39,6 @@ export default {
     };
     const empty = ref(true);
     const commodityLsit = ref(JSON.parse(JSON.stringify(store.state.user.userinfo.favorite)));
-    console.log(commodityLsit.value);
     if (commodityLsit.value.length > 0) {
       empty.value = false;
     }

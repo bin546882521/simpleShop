@@ -1,16 +1,4 @@
 <template>
-  <!-- <div class="container">
-    <div class="appbar" v-if="appbar">
-      <van-nav-bar
-        :title="title"
-        left-text="返回"
-        right-text=""
-        left-arrow
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-      />
-    </div>
-  </div> -->
   <div class="appbar" v-if="appbar">
     <van-nav-bar left-arrow @click-left="onClickLeft" @click-right="onClickRight">
       <template #right>
@@ -19,8 +7,7 @@
       </template>
     </van-nav-bar>
   </div>
-  <!-- title="type == 'up' ? 'Sign up':'Sign in' -->
-  <center class="head">{{ testData }}</center>
+  <center class="head">{{ headData }}</center>
 </template>
 <script lang="ts">
 import { ref, defineComponent, watch } from 'vue';
@@ -52,14 +39,12 @@ export default defineComponent({
   },
   watch: {
     title(newVal, oldVal) {
-      console.log(newVal + oldVal);
-      this.testData = newVal;
+      this.headData = newVal;
     },
   },
   setup(props, ctx) {
     const router = useRouter();
-    const testData = ref(props.title);
-    console.log(testData);
+    const headData = ref(props.title);
     const onClickLeft = () => {
       router.back();
       ctx.emit('click-left');
@@ -71,7 +56,7 @@ export default defineComponent({
       ctx.emit('add');
     };
     return {
-      testData,
+      headData,
       onClickLeft,
       onClickRight,
       add,
@@ -81,20 +66,6 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
-// @import "@assets/style/mixin.scss";
-// .container {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100vh;
-//   .appbar {
-//     height: 40px;
-//     box-shadow: 1px 2px 3px #eeeeee;
-//   }
-//   .content {
-//     flex: 1;
-//     overflow: auto;
-//   }
-// }
 .head {
   font-weight: bold;
   font-size: 24px;

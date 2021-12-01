@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="cart">
     <nav-bar :title="type"></nav-bar>
     <div class="fav-empty" v-if="empty">
       <Screen :screenData="screenData"></Screen>
@@ -17,13 +17,11 @@ import { useRoute, useRouter } from 'vue-router';
 import navBar from '@/components/navBar.vue';
 import avocadosmall from '@/assets/images/avocadosmall.png';
 import pear from '@/assets/images/pear.png';
-import decorate from '../../assets/images/top-decorate.png';
 import { useStore } from 'vuex';
 import cartList from '@/components/cartList.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import Screen from '@/components/screen.vue';
 import favbigimage from '@/assets/images/favbigimage.png';
-import state from '../../store/state';
 import { Toast } from 'vant';
 export default {
   components: {
@@ -44,8 +42,6 @@ export default {
       title: 'Your Cart is empty',
       definite: 'Start fall in love with some good<br />goods',
     };
-    //const commodityLsit = JSON.parse(JSON.stringify(store.state.shop.cart));
-    console.log(store.state.shop.cart);
     const commodityLsit = ref(JSON.parse(JSON.stringify(store.state.shop.cart)));
     if (commodityLsit.value.length > 0) {
       empty.value = false;
@@ -64,7 +60,6 @@ export default {
         commodityLsit.value.splice(index, 1);
         store.commit('setShop', commodityLsit.value);
       }, 1000);
-      console.log(store.state.shop.cart);
     };
     const checkOut = () => {
       router.push({ path: '/account/payment' });
@@ -76,7 +71,6 @@ export default {
       commodityLsit,
       avocadosmall,
       pear,
-      decorate,
       value,
       deleteGood,
       checkOut,

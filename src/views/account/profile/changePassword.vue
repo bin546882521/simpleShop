@@ -83,26 +83,10 @@ export default {
     const passValidator = (val: string) => {
       return val == state.newPassword ? true : false;
     };
-    //const onSubmit: (data: { conPassword: string }) => {
-    //console.log('submit', data.conPassword);
-    // const toast = Toast.loading({
-    //   message: '加载中...',
-    //   forbidClick: true,
-    //   loadingType: 'spinner',
-    // });
-    // setTimeout(() => {
-    //   toast.clear();
-    //   store.commit('setUserPassword', data.conPassword);
-    //
-    //   console.log(store.state.user.userinfo.password);
-    // }, 3000);
-    //  emit('goHome', 'true');
-    //};
     const onSubmit = (data: { conPassword: string }) => {
       delayToast(() => {
         store.commit('setUserPassword', data.conPassword);
         state.password = store.state.user.userinfo.password;
-        console.log(state.password);
       }, 3000);
     };
     const signIn = () => {

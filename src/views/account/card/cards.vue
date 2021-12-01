@@ -52,9 +52,6 @@ export default {
     const store = useStore();
     const type = ref(route.meta.title);
     const empty = ref(false);
-    console.log(store.state.shop.cart);
-    console.log(route.query.empty);
-
     const commodityLsit = ref([
       {
         cid: 1,

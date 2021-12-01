@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="explore">
     <div class="page_header">
       <div class="page_title">
         <header class="good-header">Lungangen</header>
@@ -32,17 +32,11 @@ export default {
   setup() {
     const value = ref('');
     const router = useRouter();
-    onMounted(() => {
-      setTimeout(() => {
-        // goLogin()
-      }, 2000);
-    });
     const state = reactive({
       code: '',
       commodityLsit: exploreCommodityLsit,
     });
     const goDeatail = (item, index) => {
-      console.log(item, index);
       router.push({ path: '/explore/detail', query: { name: item.name } });
     };
     return { ...toRefs(state), exploreCommodityLsit, value, goDeatail };
@@ -52,7 +46,7 @@ export default {
 
 <style lang="less" scoped>
 @import '@/common/style/mixin';
-.home {
+.explore {
   .page_header {
     .page_title {
       .good-header {

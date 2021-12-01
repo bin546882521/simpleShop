@@ -48,7 +48,6 @@ import { reactive, ref, toRefs } from 'vue';
 import navBar from '@/components/navBar.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useStore } from 'vuex';
 import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
 export default {
   components: {
@@ -58,7 +57,6 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const store = useStore();
     const type = ref(route.meta.title);
     const state: {
       title: string;
@@ -82,7 +80,6 @@ export default {
       } else {
         state.columns = ['Hangzhou', 'Shanghai'];
       }
-      console.log(state.columns);
       showPicker.value = true;
     };
     const onConfirm = (value: string) => {

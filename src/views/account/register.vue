@@ -28,12 +28,10 @@ export default {
       if (data == 'register') {
         Toast.success('注册成功');
       }
-      console.log(store.state.user.userinfo);
       router.push({ path: '/' });
     };
     const signUp = () => {
       type.value = 'Sign up';
-      console.log(type);
       // router.push({path:'/register',query: {type:data}})
     };
     const login = () => {

@@ -213,5 +213,41 @@ const explore = [
     price: '4.99',
   },
 ];
-
-export { menus, shopVariety, shopCommodityLsit, explore, exploreCommodityLsit };
+const exploreMenus = [
+  {
+    categories_name: 'Fruits',
+    cid: 1,
+    lists: explore,
+  },
+  {
+    categories_name: 'Vegtables',
+    cid: 2,
+    lists: [],
+  },
+  {
+    categories_name: 'Meat',
+    cid: 3,
+    lists: [],
+  },
+  {
+    categories_name: 'Fish',
+    cid: 4,
+    lists: [],
+  },
+  {
+    categories_name: 'Fruits',
+    cid: 5,
+    lists: [],
+  },
+  {
+    categories_name: 'Fruits',
+    cid: 6,
+    lists: [],
+  },
+  {
+    categories_name: 'Fruits',
+    cid: 7,
+    lists: [],
+  },
+]
+export { menus, shopVariety, shopCommodityLsit, explore, exploreCommodityLsit, exploreMenus };

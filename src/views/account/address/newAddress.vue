@@ -75,7 +75,6 @@ export default {
       } else {
         state.columns = ['Hangzhou', 'Shanghai'];
       }
-      console.log(state.columns);
       showPicker.value = true;
     };
     const onConfirm = (value: string) => {
@@ -89,7 +88,6 @@ export default {
 
     const onSubmit = (values: {}) => {
       console.log('submit', values);
-      //  emit('goHome', 'true');
     };
     return {
       ...toRefs(state),

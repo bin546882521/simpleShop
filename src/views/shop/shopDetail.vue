@@ -54,7 +54,6 @@ export default {
     const num = ref(1);
     const store = useStore();
     const cid = route.query.good;
-    console.log(cid);
     const commodity = ref({});
     onMounted(() => {
       commodityData();
@@ -72,11 +71,9 @@ export default {
         commodity.value.fav = 0;
       }
       store.commit('setFavorite', commodity.value);
-      console.log(store.state.user.userinfo);
     };
     const addCart = () => {
       commodity.value.num = num.value;
-      console.log(commodity.value.num);
       Toast.success('添加成功,在购物车等亲~');
       store.commit('setShopInfo', commodity.value);
     };
@@ -85,11 +82,9 @@ export default {
         cid: cid,
       };
       const res = await getCommodityDetail(params);
-      console.log(res);
       if (res.data) {
         commodity.value = res.data.commodity[0];
       }
-      console.log(commodity.value);
     };
     return {
       pear,

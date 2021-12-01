@@ -23,31 +23,16 @@ export default {
   setup(props, { emit }) {
     const state = reactive({
       length: 5,
-      //currentIndex: 0,
       code: '',
       focus: true,
-      //arrCode: [],
       disabled: false,
     });
-
     const arrCode = computed(() => {
       return state.code.split('');
     });
     const currentIndex = computed(() => {
-      console.log(state.code.length);
       return state.code.length;
     });
-    //     watch([() => state.code], values => {
-    //       //state.code = values.replace(/[^\d]/g,'');
-    //       console.log('监视多个数据', values)
-    //       console.log(values.join(''))
-    //       state.code = values.join('').replace(/[^\d]/g,'');
-    //       if(state.code.length > 2){
-    //           state.disabled = true;1231
-    //           //state.focus = false;
-    //           console.log('disabled');
-    //       }
-    //    })
     const divef = ref(null);
     onMounted(() => {
       divef.value.focus();
@@ -65,7 +50,6 @@ export default {
               divef.value.blur();
               emit('getCode', state.code);
             }
-            console.log(state.code);
           }
         },
       );
@@ -85,7 +69,6 @@ export default {
   }
 }
 .container {
-  // padding: 5%;
   margin-bottom: 30px;
 }
 .vcode {

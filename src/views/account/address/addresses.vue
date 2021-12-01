@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="address">
     <nav-bar :title="type" addShow="true" @add="addCard"></nav-bar>
     <div>
       <van-swipe-cell :right-width="50" v-for="(item, index) in commodityLsit" :key="index">
@@ -48,7 +48,6 @@ export default {
     const store = useStore();
     const type = ref(route.meta.title);
     const empty = ref(true);
-    console.log(store.state.shop.cart);
 
     const commodityLsit = ref([
       {

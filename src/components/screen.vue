@@ -17,7 +17,6 @@ export default {
     },
   },
   setup(props) {
-    console.log(props.screenData);
     return {
       empty,
     };

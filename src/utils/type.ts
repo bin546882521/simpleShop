@@ -1,29 +1,34 @@
 interface ShopState {
   cid: number;
-  name: string,
-  imgUrl: string,
-  price: string,
-  num: number,
-  fav: number,
-  introduce: string
+  name: string;
+  imgUrl: string;
+  price: string;
+  num: number;
+  fav: number;
+  introduce: string;
 }
 
 interface Cart {
-  cart: Array<ShopState>
+  cart: Array<ShopState>;
 }
 
 interface FavState {
-  fav: number,
-  cid: number
+  fav: number;
+  cid: number;
+  imgUrl: string;
+  introduce: string;
+  name: string;
+  num: number;
+  price: string;
 }
 
 interface UserState {
   userinfo: {
-    name:string,
-    phone:string,
-    password:string,
-    login:Boolean,
-    favorite:Array<FavState>,
+    name: string;
+    phone: string;
+    password: string;
+    login: Boolean;
+    favorite: Array<FavState>;
   };
 }
 

@@ -69,6 +69,7 @@ export default {
         Toast.success('取消成功');
         commodity.value.fav = 0;
       }
+      console.log(commodity.value);
       store.commit('setFavorite', commodity.value);
     };
     const addCart = () => {

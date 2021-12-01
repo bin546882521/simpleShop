@@ -12,7 +12,8 @@ export default {
     },
   },
   mutations: {
-    setFavorite(state: UserState, data: any) {
+    setFavorite(state: UserState, data: FavState) {
+      console.log(data);
       if (data.fav == 0) {
         state.userinfo.favorite.forEach((item, index) => {
           if (item.cid == data.cid) {
@@ -20,7 +21,10 @@ export default {
           }
         });
       } else {
-        state.userinfo.favorite.push(data);
+        if (data instanceof Array || typeof data == 'undefined') {
+        } else {
+          state.userinfo.favorite.push(data);
+        }
       }
     },
     setFav(state: UserState, data: {}) {

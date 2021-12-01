@@ -2,10 +2,24 @@
   <div class="main">
     <nav-bar :title="type"></nav-bar>
     <div class="main-content">
+      <div class="payment-title">
+        <div class="payment-top">
+          <div class="top-left">In-Store Pick Up</div>
+          <div class="top-right">FREE</div>
+        </div>
+        <div class="payment-bottom">
+          <div class="bottom-left">Some Stores May Be Temporily<br />Unavalabe.</div>
+          <van-icon name="arrow-down" color="#6D3805" size="15" class="bottom-icon" />
+        </div>
+      </div>
+      <van-search
+        v-model="value"
+        placeholder="Search For Town,Street,Zip Code..."
+        background="F3F3F3"
+      />
       <div class="payment-item">
         <div class="payment-left">
           <van-icon class="iconfont" class-prefix="icon" name="payitem" color="#6D3805" />
-          <!-- <van-icon class="iconfont" class-prefix="icon" name="home" size="22" color="#6D3805" /> -->
           <span>See Itemes</span>
         </div>
         <van-icon name="arrow" size="15" color="#6D3805" />
@@ -49,56 +63,72 @@
         </div>
         <div class="detail-total">
           <span>Total</span>
-          <span>$141.00</span>
+          <span>{{ money }}</span>
         </div>
       </div>
+      <van-button round block type="primary" class="payment-btn" @click="checkOut">
+        CheckOut$ {{ money }}
+      </van-button>
     </div>
-    <bottom-btn :firstFont="'CheckOut$' + money" @firstNext="checkOut"></bottom-btn>
   </div>
 </template>
-<script lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+<script lang="ts" setup>
+import { reactive, ref, toRefs, onMounted } from 'vue';
 import navBar from '@/components/navBar.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import bottomBtn from '@/components/bottomBtn.vue';
-export default {
-  components: {
-    navBar,
-    bottomBtn,
-  },
-  setup(props) {
-    const route = useRoute();
-    const router = useRouter();
-    const store = useStore();
-    const type = ref(route.meta.title);
-    const money = ref('141.50');
-    const switchCard = () => {};
-    const checkOut = () => {
-      router.push({ path: '/account/success' });
-    };
-    return {
-      type,
-      money,
-      switchCard,
-      checkOut,
-    };
-  },
+
+const route = useRoute();
+const router = useRouter();
+const store = useStore();
+const type = ref(route.meta.title);
+const money = ref('141.50');
+onMounted(() => {
+  if (route.query.total) {
+    money.value = route.query.total;
+  }
+});
+const switchCard = () => {};
+const checkOut = () => {
+  router.push({ path: '/account/success' });
 };
 </script>
 <style lang="less" scoped>
 @import '@/common/style/mixin';
 .main {
-  // margin: 0 25px;
   .main-content {
     margin: 10px 25px 0 25px;
+    .payment-title {
+      display: flex;
+      flex-direction: column;
+      .payment-top,
+      .payment-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        .top-left {
+          .sc(20px,@title-left);
+          font-weight: bold;
+        }
+        .top-right {
+          .sc(17px,@title-left);
+          font-weight: bold;
+        }
+        .bottom-left {
+          .sc(16px,@title-left);
+        }
+        .bottom-icon {
+          margin-right: 10px;
+        }
+      }
+    }
     .payment-item {
       background: @orange-thin;
       padding: 34px 10px 34px 20px;
       border-radius: 15px;
       .disbetween;
       .payment-left {
-        // margin-left: 10px;
         span {
           margin-left: 10px;
           .sc(17px,@title-left);
@@ -131,16 +161,6 @@ export default {
             .sc(15px,@title-left);
           }
         }
-        // position: relative;
-        // &:after {
-        //   content: '';
-        //   width: 100%;
-        //   height: 1px;
-        //   position: absolute;
-        //   left: 0;
-        //   bottom: 0;
-        //   background-color: #eee;
-        // }
       }
       .method-bottom {
         padding: 20px 0;
@@ -181,5 +201,11 @@ export default {
       }
     }
   }
+  .payment-btn {
+    margin: 10px 0;
+  }
+}
+.van-search {
+  padding: 10px 2px 10px 2px;
 }
 </style>

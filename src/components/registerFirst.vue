@@ -24,12 +24,23 @@
             ]"
           >
             <template #label>
-              <div class="country-select">
-                <van-image :src="sweden" />
+              <div class="country-select" @click="show = true">
+                <van-image :src="imageType" width="35px" />
                 <van-icon name="play" size="12" class="arrows" color="#828282" />
               </div>
             </template>
           </van-field>
+          <van-action-sheet v-model:show="show" cancel-text="取消" close-on-click-action>
+            <div
+              class="action-title"
+              v-for="(item, index) in actionLsit"
+              :key="index"
+              @click="onSelect(index)"
+            >
+              <van-image :src="item.imageUrl" width="30px" />
+              <span>{{ item.country }}</span>
+            </div>
+          </van-action-sheet>
         </div>
         <div v-if="registerType == 2">
           <van-field
@@ -86,6 +97,7 @@ import registerFirst from '@/assets/images/registerFirst.png';
 import registerSecond from '@/assets/images/registerSecond.png';
 import registerThird from '@/assets/images/registerThird.png';
 import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
+import china from 'assets/images/china.jpg';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
 export default {
@@ -107,7 +119,19 @@ export default {
       btnFont: 'Next',
       sms: '',
       code: '',
+      show: false,
+      imageType: china,
     });
+    const actionLsit = [
+      {
+        imageUrl: china,
+        country: '中国',
+      },
+      {
+        imageUrl: sweden,
+        country: '瑞典',
+      },
+    ];
     const phoneValidator = (val: string) =>
       new Promise((resolve) => {
         resolve(new RegExp(/^[1][3,4,5,7,8,9][0-9]{9}$/).test(val));
@@ -131,6 +155,10 @@ export default {
         getData();
         emit('goHome', 'true');
       }
+    };
+    const onSelect = (index: number) => {
+      state.show = false;
+      state.imageType = index == 0 ? china : sweden;
     };
     const getCode = (code: string) => {
       state.code = code;
@@ -159,19 +187,20 @@ export default {
     const login = () => {
       emit('login', 'Sign in');
     };
-    const onFailed = (errorInfo) => {
+    const onFailed = (errorInfo: string) => {
       console.log('failed', errorInfo);
     };
     return {
+      actionLsit,
       ...toRefs(state),
       onSubmit,
       getCode,
       login,
-      sweden,
       phoneValidator,
       passValidator,
       onFailed,
       getData,
+      onSelect,
     };
   },
 };
@@ -214,6 +243,14 @@ export default {
   }
   .secondInput {
     margin-top: 15px;
+  }
+  .action-title {
+    .discenter;
+    padding: 10px;
+    span {
+      .sc(15px,@title-left);
+      margin-left: 10px;
+    }
   }
 }
 </style>

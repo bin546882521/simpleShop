@@ -1,15 +1,5 @@
-export interface ShopState {
-  cid: number;
-  name: string,
-  imgUrl: string,
-  price: string,
-  num: number,
-  fav: number,
-  introduce: string
-}
-export interface Cart {
-  cart: Array<ShopState>
-}
+import { ShopState, Cart } from 'utils/type'
+
 export default {
   state: {
     cart: [],

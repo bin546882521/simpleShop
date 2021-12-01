@@ -15,8 +15,8 @@
           :rules="[{ required: true, message: '请填写手机号码' }]"
         >
           <template #label>
-            <div class="country-select">
-              <van-image :src="sweden" />
+            <div class="country-select" @click="show = true">
+              <van-image :src="imageType" width="35px" />
               <van-icon name="play" size="12" class="arrows" color="#828282" />
             </div>
           </template>
@@ -35,6 +35,17 @@
             </span>
           </template>
         </van-field>
+        <van-action-sheet v-model:show="show" cancel-text="取消" close-on-click-action>
+          <div
+            class="action-title"
+            v-for="(item, index) in actionLsit"
+            :key="index"
+            @click="onSelect(index)"
+          >
+            <van-image :src="item.imageUrl" width="30px" />
+            <span>{{ item.country }}</span>
+          </div>
+        </van-action-sheet>
         <p class="forget">Forgote Password</p>
       </van-cell-group>
       <div style="margin: 16px">
@@ -48,8 +59,9 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
-import register1 from '@/assets/images/Group 7040.png';
-import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
+import register1 from 'assets/images/Group 7040.png';
+import sweden from 'assets/images/SE-Sweden-Flag-icon.png';
+import china from 'assets/images/china.jpg';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
 export default {
@@ -59,14 +71,32 @@ export default {
     const state: {
       photoNumber: string;
       password: string;
+      show: boolean;
+      imageType: string;
       userInfo: { phone: string; password: string };
     } = reactive({
       photoNumber: '',
       password: '',
+      show: false,
+      imageType: china,
       userInfo: store.state.user.userinfo,
     });
+    const actionLsit = [
+      {
+        imageUrl: china,
+        country: '中国',
+      },
+      {
+        imageUrl: sweden,
+        country: '瑞典',
+      },
+    ];
     const switchPasswordType = () => {
       passwordType.value = passwordType.value === 'password' ? 'text' : 'password';
+    };
+    const onSelect = (index: number) => {
+      state.show = false;
+      state.imageType = index == 0 ? china : sweden;
     };
     const onSubmit = (values: { photoNumber: string; password: string }) => {
       if (
@@ -85,11 +115,12 @@ export default {
     return {
       ...toRefs(state),
       register1,
-      sweden,
+      actionLsit,
       passwordType,
       onSubmit,
       signUp,
       switchPasswordType,
+      onSelect,
     };
   },
 };
@@ -114,7 +145,6 @@ export default {
   }
   .tag {
     font-size: 15px;
-    // line-height: 15px;
     color: #7f4e1d;
     text-align: left;
     margin-bottom: 10px;
@@ -123,6 +153,14 @@ export default {
     font-size: 14px;
     color: #ff5e00;
     text-align: right;
+  }
+  .action-title {
+    .discenter;
+    padding: 10px;
+    span {
+      .sc(15px,@title-left);
+      margin-left: 10px;
+    }
   }
 }
 </style>

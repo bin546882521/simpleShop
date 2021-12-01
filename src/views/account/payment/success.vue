@@ -1,47 +1,31 @@
 <template>
   <div class="home">
-    <!-- <van-image :src="success" />
-    <div>
-      <p class="title">Your Order Has Been Accepted</p>
-      <p class="definite">
-        We've accepted your order,and we're<br />
-        getting it ready
-      </p>
-    </div> -->
     <div class="success-screen">
       <Screen :screenData="screenData"></Screen>
     </div>
-    <bottom-btn firstFont="Track Order" secondFont="Back Home" show="true"></bottom-btn>
+    <bottom-btn
+      firstFont="Track Order"
+      secondFont="Back Home"
+      show="true"
+      @firstNext="goTo('/account/orders')"
+      @secondNext="goTo('/')"
+    ></bottom-btn>
   </div>
 </template>
-<script lang="ts">
-// import { reactive, ref, toRefs } from "vue";
+<script lang="ts" setup>
 import success from '@/assets/images/success.png';
 import { useRoute, useRouter } from 'vue-router';
 import bottomBtn from '@/components/bottomBtn.vue';
 import Screen from '@/components/screen.vue';
-export default {
-  components: {
-    bottomBtn,
-    Screen,
-  },
-  setup() {
-    const route = useRoute();
-    const router = useRouter();
-    const screenData = {
-      imageUrl: success,
-      title: 'Your Order Has Been Accepted',
-      definite: 'We’ve accepted your order,and we’re<br />getting it ready',
-    };
-    const goRegister = (data) => {
-      router.push({ path: 'register', query: { type: data } });
-    };
-    return {
-      // success,
-      screenData,
-      goRegister,
-    };
-  },
+
+const router = useRouter();
+const screenData = {
+  imageUrl: success,
+  title: 'Your Order Has Been Accepted',
+  definite: 'We’ve accepted your order,and we’re<br />getting it ready',
+};
+const goTo = (r: string, query: any) => {
+  router.push({ path: r, query: query || {} });
 };
 </script>
 <style lang="less">

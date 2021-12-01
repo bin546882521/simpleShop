@@ -22,6 +22,7 @@
           class="secondInput"
           v-model="newPassword"
           name="newPassword"
+          type="password"
           placeholder="New Password"
           :rules="[{ required: true, message: '请输入密码' }]"
         >
@@ -35,6 +36,7 @@
         <van-field
           v-model="conPassword"
           name="conPassword"
+          type="password"
           placeholder="Confirm Password"
           :rules="[
             { required: true, message: '请确认密码' },
@@ -58,48 +60,35 @@
     </van-form>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import navBar from '@/components/navBar.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { delayToast } from 'utils/common';
-export default {
-  components: {
-    navBar,
-    bottomBtn,
-  },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const store = useStore();
-    const state = reactive({
-      type: route.meta.title,
-      password: store.state.user.userinfo.password,
-      newPassword: '',
-      conPassword: '',
-    });
-    const passValidator = (val: string) => {
-      return val == state.newPassword ? true : false;
-    };
-    const onSubmit = (data: { conPassword: string }) => {
-      delayToast(() => {
-        store.commit('setUserPassword', data.conPassword);
-        state.password = store.state.user.userinfo.password;
-      }, 3000);
-    };
-    const signIn = () => {
-      router.push({ path: '/login' });
-    };
-    return {
-      ...toRefs(state),
-      onSubmit,
-      passValidator,
-      signIn,
-    };
-  },
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
+const state = reactive({
+  type: route.meta.title,
+  password: store.state.user.userinfo.password,
+  newPassword: '',
+  conPassword: '',
+});
+const passValidator = (val: string) => {
+  return val == state.newPassword ? true : false;
 };
+const onSubmit = (data: { conPassword: string }) => {
+  delayToast(() => {
+    store.commit('setUserPassword', data.conPassword);
+    state.password = store.state.user.userinfo.password;
+  }, 3000);
+};
+const signIn = () => {
+  router.push({ path: '/login' });
+};
+const { type, password, newPassword, conPassword } = toRefs(state);
 </script>
 <style lang="less" scoped>
 @import '@/common/style/mixin';

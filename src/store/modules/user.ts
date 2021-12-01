@@ -1,24 +1,11 @@
 import { setLocal, getLocal } from 'utils/common'
-export interface FavState {
-  fav: number,
-  cid: number
-}
-
-export interface UserState {
-  userinfo: {
-    name:string,
-    phone:string,
-    password:string,
-    login:Boolean,
-    favorite:Array<FavState>,
-  };
-}
+import { FavState, UserState } from 'utils/type'
 
 export default {
   state: {
     userinfo: {
       name: 'admin',
-      phone: '01511234567',
+      phone: '18268217720',
       password: '123456',
       login: false,
       favorite: [] 

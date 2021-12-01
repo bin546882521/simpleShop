@@ -49,6 +49,7 @@ import navBar from '@/components/navBar.vue';
 import bottomBtn from '@/components/bottomBtn.vue';
 import { useRoute, useRouter } from 'vue-router';
 import sweden from '@/assets/images/SE-Sweden-Flag-icon.png';
+import { adressState } from 'utils/type';
 export default {
   components: {
     navBar,
@@ -58,13 +59,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const type = ref(route.meta.title);
-    const state: {
-      title: string;
-      name: string;
-      city: string;
-      address: string;
-      columns: Array<string>;
-    } = reactive({
+    const state: adressState = reactive({
       title: '',
       name: '',
       city: '',
@@ -93,7 +88,6 @@ export default {
 
     const onSubmit = (values: {}) => {
       console.log('submit', values);
-      //  emit('goHome', 'true');
     };
     return {
       ...toRefs(state),

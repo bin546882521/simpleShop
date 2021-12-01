@@ -64,6 +64,11 @@ body.dialog-open {
   justify-content: center;
   align-items: end;
 }
+.disbase {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
 .disbetween {
   display: flex;
   justify-content: space-between;

@@ -55,46 +55,36 @@
     </ul>
   </div>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import navBar from '@/components/navBar.vue';
-import { Toast } from 'vant';
 import { Dialog } from 'vant';
-export default {
-  components: {
-    navBar,
-  },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const store = useStore();
-    const type = ref(route.meta.title);
-    const checked: any = ref(true);
-    const goTo = (r: string, query: any) => {
-      router.push({ path: r, query: query || {} });
-    };
-    const logout = () => {
-      router.push({ path: '/login' });
-      store.commit('setLogin', false);
-    };
-    const onUpdateValue = (newValue: Boolean) => {
-      Dialog.confirm({
-        title: '提醒',
-        message: '是否切换开关？',
-      }).then(() => {
-        checked.value = newValue;
-      });
-    };
-    return {
-      checked,
-      type,
-      goTo,
-      onUpdateValue,
-      logout,
-    };
-  },
+const router = useRouter();
+const route = useRoute();
+const store = useStore();
+const type = ref(route.meta.title);
+const checked: any = ref(true);
+const goTo = (r: string, query: any) => {
+  router.push({ path: r, query: query || {} });
+};
+const logout = () => {
+  Dialog.confirm({
+    title: '提醒',
+    message: '是否登出？ ',
+  }).then(() => {
+    router.push({ path: '/login' });
+    store.commit('setLogin', false);
+  });
+};
+const onUpdateValue = (newValue: Boolean) => {
+  Dialog.confirm({
+    title: '提醒',
+    message: '是否切换开关？',
+  }).then(() => {
+    checked.value = newValue;
+  });
 };
 </script>
 <style lang="less" scoped>

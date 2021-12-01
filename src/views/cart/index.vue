@@ -62,7 +62,14 @@ export default {
       }, 1000);
     };
     const checkOut = () => {
-      router.push({ path: '/account/payment' });
+      if (commodityLsit.value.length > 0) {
+        let total = 0;
+        commodityLsit.value.forEach((item) => {
+          total += parseFloat(item.totalPrice);
+        });
+        console.log(total.toFixed(2));
+        router.push({ path: '/account/payment', query: { total: total.toFixed(2) } });
+      }
     };
     return {
       screenData,

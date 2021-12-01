@@ -5,7 +5,6 @@ router.beforeEach((to, from, next: Function) => {
   // form表示从那个页面跳转而来
   // next表示允许跳转到指定位置
   const login:Boolean = getLocal('userinfo').login;
-  console.log(login);
   if(login){
     next()
   }else{

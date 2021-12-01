@@ -12,7 +12,7 @@
           disabled
         >
         </van-field>
-        <van-field v-model="phone" name="phone" placeholder="Phone Number" disabled>
+        <van-field v-model="phone" name="phone" placeholder="Phone Number">
           <template #label>
             <div class="country-select">
               <van-image :src="sweden" />
@@ -45,7 +45,7 @@ export default {
     const state = reactive(store.state.user.userinfo);
 
     const onSubmit = (values: {}) => {
-      router.push({ path: '/account/changePassword' });
+      router.go(-1);
     };
     return {
       ...toRefs(state),

@@ -1,4 +1,4 @@
-import { ComponentInternalInstance, getCurrentInstance } from "vue";
+import { ComponentInternalInstance, getCurrentInstance } from 'vue';
 import { Toast } from 'vant';
 // 修复Vue3 getCurrentInstance与ts结合使用的问题
 const useCurrentInstance = () => {
@@ -17,25 +17,24 @@ const delayToast = (fn: Function, wait = 3000) => {
   });
   setTimeout(() => {
     toast.clear();
-    Toast.success('成功')
-    fn()
+    Toast.success('成功');
+    fn();
   }, wait);
-  
-}
-
+};
+//本地数据读取
 const getLocal = (key: string) => {
   let value: any = localStorage.getItem(key);
-  if (value && value != "undefined" && value != "null") {
+  if (value && value != 'undefined' && value != 'null') {
     return JSON.parse(value);
   }
   return false;
-}
-
+};
+//本地数据写入
 const setLocal = (key: string, value: any) => {
   if (value) {
     value = JSON.stringify(value);
   }
-  localStorage.setItem(key, value)
-}
+  localStorage.setItem(key, value);
+};
 
 export { useCurrentInstance, delayToast, getLocal, setLocal };

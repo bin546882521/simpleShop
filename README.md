@@ -35,7 +35,9 @@ code-assessment-chenbin
 ├─ README.md
 ├─ src
 │  ├─ api
-│  │  └─ index.ts       //请求地址
+│  │  ├─ index.ts       //api列表
+│  │  ├─ http.ts        //数据请求
+│  │  └─ request.ts     //请求拦截
 │  ├─ App.vue
 │  ├─ assets
 │  │  ├─ Iconfont       //阿里iconfont
@@ -62,14 +64,12 @@ code-assessment-chenbin
 │  │     └─ user.ts
 │  ├─ utils
 │  │  ├─ common.ts      //公共方法
-│  │  ├─ http.ts        //数据请求
 │  │  ├─ permission.ts  //路由守卫
-│  │  ├─ request.ts     //请求拦截
 │  │  └─ type.ts        //类型声明
 │  ├─ views
 │  │  ├─ account        //个人中心
 │  │  ├─ cart           //购物车
-│  │  ├─ empty.vue
+│  │  ├─ empty.vue      //error
 │  │  ├─ explore        //分类
 │  │  ├─ favorite       //收藏列表
 │  │  ├─ shop           //商品信息

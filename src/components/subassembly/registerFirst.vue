@@ -57,7 +57,7 @@
           </van-field>
         </div>
         <div v-if="registerType == 3">
-          <verfication-Code @getCode="getCode"></verfication-Code>
+          <verification-Code @getCode="getCode"></verification-Code>
         </div>
         <p class="tag" v-show="registerType == 1" v-html="remark2"></p>
       </van-cell-group>
@@ -74,16 +74,16 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, onUpdated, onMounted } from 'vue';
-import verficationCode from '../components/verificationCode.vue';
 import registerFirst from '@/assets/images/registerFirst.png';
 import registerSecond from '@/assets/images/registerSecond.png';
 import registerThird from '@/assets/images/registerThird.png';
-import phoneInput from 'comps/phoneInput.vue';
+import phoneInput from '@/components/subassembly/phoneInput.vue';
+import verificationCode from '@/components/subassembly/verificationCode.vue';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
 export default {
   components: {
-    verficationCode,
+    verificationCode,
     phoneInput,
   },
   setup(props, { emit }) {

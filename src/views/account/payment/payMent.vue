@@ -51,11 +51,11 @@
         <div class="detail-title">Payment Method</div>
         <div class="detail-content">
           <span>Subtotal</span>
-          <span>$137.00</span>
+          <span>{{ money }}</span>
         </div>
         <div class="detail-content">
           <span>Tax</span>
-          <span>$4.50</span>
+          <span>$00.00</span>
         </div>
         <div class="detail-content">
           <span>Delivery Price</span>
@@ -201,7 +201,7 @@ const checkOut = () => {
     }
   }
   .payment-btn {
-    margin: 10px 0;
+    margin: 20px 0;
   }
 }
 .van-search {

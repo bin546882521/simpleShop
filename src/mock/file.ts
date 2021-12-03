@@ -1,20 +1,20 @@
-import Mock from 'mockjs'
+import Mock from 'mockjs';
 import { menus, shopVariety, shopCommodityLsit, explore, exploreCommodityLsit } from '@/mock/data';
-const Random = Mock.Random
+const Random = Mock.Random;
 
 export default [
   {
     url: '/upload/file',
     type: 'post',
-    response: config => {
+    response: (config: any) => {
       return {
         code: 200,
         data: {
           name: 'file',
-          url: Random.image('200x100', '#50B347', '#FFF', 'Mfile')
-        }
-      }
-    }
+          url: Random.image('200x100', '#50B347', '#FFF', 'Mfile'),
+        },
+      };
+    },
   },
   {
     url: '/api/getMenus',
@@ -23,10 +23,10 @@ export default [
       return {
         code: 200,
         data: {
-          menus
-        }
-      }
-    }
+          menus,
+        },
+      };
+    },
   },
   {
     url: '/api/getShopVariety',
@@ -35,10 +35,10 @@ export default [
       return {
         code: 200,
         data: {
-          shopVariety
-        }
-      }
-    }
+          shopVariety,
+        },
+      };
+    },
   },
   {
     url: '/api/getShopCommodityLsit',
@@ -47,25 +47,26 @@ export default [
       return {
         code: 200,
         data: {
-          shopCommodityLsit
-        }
-      }
-    }
+          shopCommodityLsit,
+        },
+      };
+    },
   },
   {
     url: '/api/getCommodityDetail',
     type: 'get',
-    response: (data:any) => {
+    response: (data: any) => {
       const cid = JSON.parse(data.body).cid;
-      const commodity = shopCommodityLsit.filter((item:any) => {
-        return item.cid == cid
+      const commodity = shopCommodityLsit.filter((item: any) => {
+        return item.cid == cid;
       });
+      console.log(commodity);
       return {
         code: 200,
         data: {
-          commodity
-        }
-      }
-    }
+          commodity,
+        },
+      };
+    },
   },
-]
+];

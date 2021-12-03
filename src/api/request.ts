@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 import { Toast } from 'vant';
-const baseURL = "http://localhost:3000/api";
+const baseURL = '';
 const requestTimeout = 10000;
 const instance = axios.create({
-  // baseURL,
+  baseURL,
   timeout: requestTimeout,
   headers: {
-    "Content-Type": "application/json;charset=UTF-8"
-  }
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
 });
 
 instance.interceptors.request.use(
-  config => {
+  (config) => {
     Toast.loading({
       duration: 0,
       forbidClick: true,
@@ -19,17 +19,17 @@ instance.interceptors.request.use(
     });
     return config;
   },
-  error => {
+  (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     Toast.clear();
     const res = response.data;
     return res;
   },
-  error => {
+  (error) => {
     Toast.clear();
     const { response } = error;
     if (response && response.data) {
@@ -39,7 +39,7 @@ instance.interceptors.response.use(
       console.log(message);
       return Promise.reject(error);
     }
-  }
+  },
 );
 
 export default instance;

@@ -32,7 +32,7 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs, onMounted } from 'vue';
-import goodsList from 'comps/goodsList.vue';
+import { goodsList } from 'comps';
 import { useRoute, useRouter } from 'vue-router';
 import { getShopVariety, getShopCommodityLsit } from '@/api/index';
 export default {

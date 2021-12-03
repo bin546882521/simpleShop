@@ -35,8 +35,8 @@
 </template>
 <script lang="ts">
 import { reactive, ref, toRefs } from 'vue';
+import phoneInput from '@/components/subassembly/phoneInput.vue';
 import register1 from 'assets/Group 7040.png';
-import phoneInput from 'comps/phoneInput.vue';
 import { useStore } from 'vuex';
 import { Toast } from 'vant';
 

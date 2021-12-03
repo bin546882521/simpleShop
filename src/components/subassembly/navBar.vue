@@ -12,7 +12,7 @@
 <script lang="ts">
 import { ref, defineComponent, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import decorate from '@/assets/images/top-decorate.png';
+import decorate from 'assets/top-decorate.png';
 export default defineComponent({
   name: 'AppContainer',
   props: {

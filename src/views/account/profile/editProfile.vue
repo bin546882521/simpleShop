@@ -20,10 +20,9 @@
 </template>
 <script lang="ts" setup>
 import { reactive, ref, toRefs } from 'vue';
-import { bottomBtn, navBar } from 'comps';
+import { bottomBtn, navBar, phoneInput } from 'comps';
 import { useRoute, useRouter } from 'vue-router';
 import { useStore } from 'vuex';
-import phoneInput from 'comps/phoneInput.vue';
 
 const router = useRouter();
 const route = useRoute();

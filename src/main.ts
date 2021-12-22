@@ -14,6 +14,8 @@ import '@/mock/index.ts';
 let app = createApp(App);
 //路由守卫
 import 'utils/permission';
+//vite获取环境变量
+console.log(import.meta.env.VITE_BASE_ENV as string);
 
 app.config.globalProperties.$Toast = Toast;
 

@@ -24,7 +24,16 @@ export default defineConfig({
     //   supportTs: true,
     // }),
   ],
-
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {},
+        javascriptEnabled: true,
+        // .vue不用手动引入
+        additionalData: `@import "src/common/style/common.less";`,
+      },
+    },
+  },
   publicDir: 'public',
 
   //vite开发服务器配置

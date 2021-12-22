@@ -67,4 +67,529 @@ body {
       content: '';
     }
   }
+
+  @rem: 1px;
+.for(@i) when (@i<=21) {
+  @size: @i * 5;
+  .for(@i + 1);
+  .font@{size}{
+    font-size:@size+@rem;
+  }
+  .m@{size}{
+      margin: @size/@rem;
+    }
+  .ml@{size}{
+    margin-left: @size/@rem;
+  }
+  .mr@{size}{
+    margin-right: @size/@rem;
+  }
+  .mt@{size}{
+    margin-top: @size/@rem;
+  }
+  .mb@{size}{
+    margin-bottom: @size/@rem;
+  }
+ 
+  .p@{size}{
+    padding: @size/@rem;
+  }
+  .pl@{size}{
+    padding-left: @size/@rem;
+  }
+  .pr@{size}{
+    padding-right: @size/@rem;
+  }
+  .pt@{size}{
+    padding-top: @size/@rem;
+  }
+  .pb@{size}{
+    padding-bottom: @size/@rem;
+  }
 }
+.for(1);
+// .for(@i) when(@i <= 6) { //@i
+//   .for(@i + 1); //@i + 1 相当于"++i"
+//   .box@{i} {
+//       width:50px;
+//       height:50px;
+//   }
+// }
+// .for(1);
+input[type="text"], input[type="email"], input[type="textarea"] { 
+  font-size: 99px;
+}
+}
+
+
+// /*! variable */
+// /* 全局方法 */
+// $unit: px;
+// $unitXP:PX;
+// $step: 1;
+// $color-border: #e9e9e9;
+// $dirlist: top,
+// bottom,
+// left,
+// right;
+// @mixin size($width:100%,$height:$width){
+//     width: $width;
+//     height: $height;
+// }
+// @mixin bg($fileName,$width:100%,$height:100%){
+//     background:url($fileName) no-repeat;
+//     background-size: $width $height;
+// }
+// /* marginAuto */
+// $i: 100;
+// @while $i>-1 {
+//     .marginAuto#{$i}{
+//         margin:#{$i}#{$unit} auto;
+//     }
+//     $i: $i - $step;
+// }
+// /* min */
+// $i: 10000;
+// @while $i>-1 {
+//     .minWidth#{$i} {
+//         min-width:#{$i}#{$unit} ;
+//     }
+//     .minHeight#{$i} {
+//         min-height:#{$i}#{$unit} ;
+//     }
+    
+//     $i: $i - $step;
+// }
+
+
+// /*! font-size */
+
+// .font-size-inherit {
+//     font-size: inherit;
+// }
+
+// @for $i from -10 through 60 {
+//     .font-size#{$i} {
+//         font-size: #{$i}#{$unit};
+//     }
+// }
+
+
+// /*! margin padding */
+
+// .marginXauto {
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+
+// $i: 1000;
+// @while $i>-1 {
+//     .margin#{$i}X {
+//         margin-top: #{$i}#{$unit};
+//         margin-bottom: #{$i}#{$unit};
+//     }
+//     .marginX#{$i} {
+//         margin-left: #{$i}#{$unit};
+//         margin-right: #{$i}#{$unit};
+//     }
+//     .padding#{$i}X {
+//         padding-top: #{$i}#{$unit};
+//         padding-bottom: #{$i}#{$unit};
+//     }
+//     .paddingX#{$i} {
+//         padding-left: #{$i}#{$unit};
+//         padding-right: #{$i}#{$unit};
+//     }
+//     $i: $i - $step;
+// }
+
+// $i: 1000;
+// @while $i>-1 {
+//     @each $dir in $dirlist {
+//         .margin-#{$dir}#{$i} {
+//             margin-#{$dir}: #{$i}#{$unit};
+//         }
+//         .padding-#{$dir}#{$i} {
+//             padding-#{$dir}: #{$i}#{$unit};
+//         }
+//     }
+//     $i: $i - $step;
+// }
+
+
+// /*! border */
+
+// .border-none {
+//     border: none;
+// }
+
+// @each $dir in $dirlist {
+//     .border-#{$dir}1 {
+//         border-#{$dir}: 1#{$unit} solid $color-border;
+//     }
+// }
+
+
+// /*! border-radius */
+
+// .border-radius50 {
+//     border-radius: 50%;
+// }
+
+// .border-radius100 {
+//     border-radius: 100%;
+// }
+
+// $i: 20;
+// @while $i>-1 {
+//     .border-radius#{$i} {
+//         border-radius: #{$i}#{$unit};
+//     }
+//     $i: $i - 1;
+// }
+
+
+// /*! float */
+
+// .float-left {
+//     float: left;
+// }
+
+// .float-right {
+//     float: right;
+// }
+
+// /*! height */
+
+// /*! line-height */
+
+// $i: 100;
+// @while $i>0 {
+//     .line-height#{$i} {
+//         line-height: #{$i}#{$unit};
+//     }
+//     $i: $i - $step;
+// }
+
+
+// /*! display */
+
+// .block {
+//     display: block;
+// }
+
+// .inline-block {
+//     display: inline-block;
+// }
+
+// .display-none {
+//     display: none;
+// }
+
+
+// /*! position */
+
+// .relative {
+//     position: relative;
+// }
+
+// .absolute {
+//     position: absolute;
+// }
+
+// .fixed {
+//     position: fixed;
+// }
+
+// .translateX {
+//     left: 50%;
+//     transform: translateX(-50%);
+// }
+
+// .translateY {
+//     top: 50%;
+//     transform: translateY(-50%);
+// }
+
+// .translateXY {
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+// }
+
+// $i: 100;
+// @while $i>-100 {
+//     @each $dir in $dirlist {
+//         .#{$dir}#{$i} {
+//             #{$dir}: #{$i}#{$unit};
+//         }
+//     }
+//     $i: $i - $step;
+// }
+
+
+// /*! text-align */
+
+// .align-center {
+//     text-align: center;
+// }
+
+// .align-left {
+//     text-align: left;
+// }
+
+// .align-right {
+//     text-align: right;
+// }
+
+
+// /*! rotate */
+
+// .rotate90 {
+//     transform: rotate(90deg);
+// }
+
+// .rotate180 {
+//     transform: rotate(180deg);
+// }
+
+
+// /*! flex */
+
+// .flex {
+//     display: flex;
+// }
+
+// .flex1 {
+//     flex: 1
+// }
+
+// .flex-justify {
+//     display: flex;
+//     justify-content: center;
+// }
+
+// .flex-align {
+//     display: flex;
+//     align-items: center;
+// }
+
+// .flex-align-justify {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .flex-align-start {
+//     display: flex;
+//     justify-content: flex-start;
+//     align-content: center;
+// }
+
+// .flex-align-end {
+//     display: flex;
+//     justify-content: flex-end;
+//     align-content: center;
+// }
+
+// .flex-baseline {
+//     display: flex;
+//     align-items: baseline;
+// }
+
+// .flex-spacearound {
+//     display: flex;
+//     justify-content: space-around;
+// }
+
+// .flex-spacebetween {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+// .flex-wrap {
+//     display: flex;
+//     flex-wrap:wrap
+// }
+
+// .flex-baseline-wrap {
+//     display: flex;
+//     align-items: baseline;
+//     flex-wrap:wrap;
+// }
+
+// .flex-align-wrap {
+//     display: flex;
+//     align-items: align;
+//     flex-wrap:wrap;
+// }
+
+// .flex-nowrap {
+//     display: flex;
+//     flex-wrap: nowrap;
+// }
+
+// .flex-column {
+//     display: flex;
+//     flex-direction: column;
+// }
+// .flex-column-center{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+// }
+// .flex-column-spacebetween {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+// }
+
+// .flex-column-spacearound {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+// }
+// .flex-column-end {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-end;
+// }
+// .itemflex-00auto {
+//     flex: 0 0 auto;
+// }
+
+// .itemflex-11auto {
+//     flex: 1 1 auto;
+// }
+
+
+// /*! justify */
+
+// .justify {
+//     text-align: justify;
+//     text-align-last: justify;
+// }
+
+// .justify:after {
+//     display: inline-block;
+//     content: '';
+//     width: 100%;
+// }
+
+
+// /*! opacity */
+
+// $i: 10;
+// @while $i>=0 {
+//     .opacity_#{$i} {
+//         opacity: 0.1 * $i;
+//     }
+//     $i: $i - 1;
+// }
+
+
+// /*! word-break */
+
+// .break-all {
+//     word-break: break-all;
+// }
+
+// .break-word {
+//     word-break: break-word;
+// }
+
+
+// /* white-space */
+
+// .pre-wrap {
+//     white-space: pre-wrap;
+// }
+
+// .nowrap {
+//     white-space: nowrap;
+// }
+
+
+// /*! scroll */
+
+// .scroll-x {
+//     overflow-x: scroll;
+// }
+
+// .scroll-y {
+//     overflow-y: scroll;
+// }
+
+// .scroll-auto {
+//     overflow: auto;
+// }
+
+// // line
+// .line-ellipsis {
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+// }
+
+// @for $i from 1 through 10 {
+//     .line-limited#{$i} {
+//         display: -webkit-box;
+//         -webkit-box-orient: vertical;
+//         -webkit-line-clamp: $i;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//     }
+// }
+
+// /*! other */
+
+// .bold {
+//     font-weight: bold;
+// }
+
+// .clear {
+//     overflow: hidden;
+// }
+// .font-width400{
+//     font-weight: 400
+// }
+// .clear-both {
+//     clear: both;
+// }
+
+// .inline-middle {
+//     display: inline;
+//     vertical-align: middle;
+// }
+
+// @each $dir in $dirlist {
+//     .vertical-#{$dir} {
+//         display: inline;
+//         vertical-align:#{$dir};
+//     }
+    
+// }
+
+// .border-box {
+//     box-sizing: border-box;
+// }
+
+// .visibility-visible {
+//     visibility: visible;
+// }
+// .visibility-hidden {
+//     visibility: hidden;
+// }
+// @font-face {
+//     font-family: 'iconfont';  /* Project id 2920857 */
+//     src: url('//at.alicdn.com/t/font_2920857_fl0wxlu521d.woff2?t=1637026370845') format('woff2'),
+//          url('//at.alicdn.com/t/font_2920857_fl0wxlu521d.woff?t=1637026370845') format('woff'),
+//          url('//at.alicdn.com/t/font_2920857_fl0wxlu521d.ttf?t=1637026370845') format('truetype');
+//   }
+//   .iconfont{
+//     font-family:"iconfont" !important;
+//     font-style:normal;
+//     -webkit-font-smoothing: antialiased;
+//     -webkit-text-stroke-width: 0.2px;
+//     -moz-osx-font-smoothing: grayscale;}
+

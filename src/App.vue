@@ -58,5 +58,5 @@ export default {
 </script>
 
 <style lang="less">
-@import '@/common/style/common';
+// @import '@/common/style/common';
 </style>

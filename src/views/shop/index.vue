@@ -11,7 +11,7 @@
     </div>
     <div class="commodity">
       <div class="commodity-head">
-        <span class="title-left">Categories</span>
+        <span class="title-left font50">Categories</span>
         <span class="title-right" @click="explore">See All</span>
       </div>
       <div class="commodity-content">
